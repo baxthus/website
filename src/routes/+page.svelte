@@ -109,8 +109,8 @@
                 description="best way to contact me"
                 />
                 <ProjectItem
-                href="mailto:abysmal@vern.cc"
-                name="abysmal@vern.cc"
+                href="mailto:abysmal@ttm.sh"
+                name="abysmal@ttm.sh"
                 description="contact email"
                 />
                 <ProjectItem
