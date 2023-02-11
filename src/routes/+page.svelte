@@ -69,27 +69,27 @@
             <h1 class="text-[#89b4fa]">projects</h1>
             <ul class="list-disc list-inside text-[#7f849c]">
                 <ProjectItem
-                href="https://github.com/abysmal26/website"
+                href="https://github.com/Abysm0xC/website"
                 name="website"
                 description="this website"
                 />
                 <ProjectItem
-                href="https://github.com/abysmal26/AdramelechBot"
+                href="https://github.com/Abysm0xC/AdramelechBot"
                 name="adramelech bot"
                 description="my discord bot"
                 />
                 <ProjectItem
-                href="https://github.com/abysmal26/errorpages"
+                href="https://github.com/Abysm0xC/errorpages"
                 name="error pages"
                 description="error pages template"
                 />
                 <ProjectItem
-                href="https://github.com/abysmal26/digital-clock"
+                href="https://github.com/Abysm0xC/digital-clock"
                 name="digital clock"
                 description="a digital clock example in svelte"
                 />
                 <ProjectItem
-                href="https://github.com/abysmal26/tests"
+                href="https://github.com/Abysm0xC/tests"
                 name="random scripts"
                 description="my random scripts"
                 />
@@ -104,7 +104,7 @@
                 description="find all my socials here"
                 />
                 <ProjectItem
-                href="https://t.me/abysmal26"
+                href="https://t.me/Abysm0xC"
                 name="telegram"
                 description="best way to contact me"
                 />
@@ -128,15 +128,15 @@
                 name="status page"
                 />
                 <ProjectItem
-                href="https://github.com/abysmal26"
+                href="https://github.com/Abysm0xC"
                 name="github"
                 />
                 <ProjectItem
-                href="https://twitter.com/abysmal26"
+                href="https://twitter.com/Abysm0xC"
                 name="twitter"
                 />
                 <ProjectItem
-                href="https://instagram.com/abysmal26_"
+                href="https://instagram.com/Abysm0xC"
                 name="instagram"
                 />
                 <li><a href="/contact" class="text-[#b4befe] hover:underline">contact form</a></li>
