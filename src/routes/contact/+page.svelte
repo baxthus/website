@@ -1,4 +1,6 @@
 <script lang="ts">
+    import type Contact from '$lib/types/contact';
+
     let inputName: string;
     let inputEmail: string;
     let inputMessage: string;
@@ -7,7 +9,7 @@
     const submitForm = async () => {
         submitStatus = 'submitting';
 
-        const data = {
+        const data: Contact = {
             originURL: window.location.protocol + '//' + window.location.host,
             inputName,
             inputEmail,
@@ -15,7 +17,7 @@
         };
 
         const res = await (
-            await fetch('https://api.abysmal.eu.org/contact', {
+            await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
