@@ -31,7 +31,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent): Promise<R
 
     const embed: Embed = {
         title: 'Contact Form',
-        description: `From ${content.originURL} at <t:${Date.now()}:f>`,
+        description: `From ${content.originURL} at <t:${String(Date.now() / 1000).split('.')[0]}:f>`,
         color: 13346551,
         fields: [
             {
