@@ -1,7 +1,14 @@
 <script lang="ts">
     export let lang = '';
+    let nodeVersion: string;
 
-    const nodeVersion = '19.0.1';
+    fetch('https://api.github.com/repos/nodejs/node/releases?per_page=1').then(
+        (res) =>
+            res.json().then((json) => {
+                nodeVersion = json[0].tag_name;
+            })
+    );
+
     let langMap: Record<string, string>;
     $: langMap = {
         js: `<span class="text-[#94e2d5]"> node ${nodeVersion}`,
