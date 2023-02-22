@@ -10,7 +10,12 @@ const config = {
 	preprocess: preprocess({ postcss: true }),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		vite: {
+			define: {
+				global: {}
+			}
+		}
 	}
 };
 
