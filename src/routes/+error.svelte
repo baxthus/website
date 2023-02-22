@@ -10,5 +10,7 @@
 <!-- prettier-ignore -->
 <section class="text-center">
     <h1>{$page.status}: {$page.error?.message}</h1>
-    Note: Try pressing <code>SHIFT</code> + <code>F5</code>
+    {#if $page.status === 500}
+        Note: Try reloading the page
+    {/if}
 </section>
