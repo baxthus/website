@@ -11,11 +11,11 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-		vite: {
-			define: {
-				global: {}
-			}
-		}
+		// vite: {
+		// 	define: {
+		// 		global: {}
+		// 	}
+		// }
 	}
 };
 
