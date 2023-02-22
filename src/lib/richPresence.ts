@@ -17,7 +17,7 @@ interface Activity {
 export const getCodeData = (data?: LanyardData): VSCodeData | undefined => {
     const codeActivity = data?.activities.find(a => a.application_id === '810516608442695700');
 
-    if (!codeActivity) return undefined
+    if (!codeActivity) return undefined;
 
     if (codeActivity.details === 'Idling') {
         return {
