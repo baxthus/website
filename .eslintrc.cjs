@@ -52,10 +52,10 @@ module.exports = {
 		'quotes': ['error', 'single'],
 		'semi': ['error', 'always'],
 		'space-before-blocks': 'error',
-		'space-before-function-paren': ['error', {
-			'anonymous': 'never',
+		'space-before-function-paren': ['never', {
+			'anonymous': 'always',
 			'named': 'never',
-			'asyncArrow': 'always'
+			'asyncArrow': 'always',
 		}],
 		'space-in-parens': 'error',
 		'space-infix-ops': 'error',

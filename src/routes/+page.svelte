@@ -4,11 +4,11 @@
     import Branch from '$lib/components/Branch.svelte';
     import Language from '$lib/components/Language.svelte';
     import Workspace from '$lib/components/Workspace.svelte';
-    import { getCodeData, getOtherActivities } from '$lib/rpcUtils';
+    import { getCodeData, getOtherActivities } from '$lib/richPresence';
     import { useLanyard } from 'sk-lanyard';
-    import { getCommit } from '$lib/gitUtils';
+    import getCommit from '$lib/getCommit';
 
-    const commitHASH = getCommit();
+    const commitHash = getCommit();
 
     const timeZone = 'Etc/GMT+3';
     // prettier-ignore
@@ -191,13 +191,13 @@
                 </div>
             {/each}
         {/if}
-        {#await commitHASH}
+        {#await commitHash}
             <div>
                 Loading...
             </div>
-        {:then commitHASH}
+        {:then commitHash}
             <div>
-                <a href="https://github.com/abysmal26/website/commit/{commitHASH}" target="_blank" rel="noreferrer" class="text-[#b4befe] hover:underline">{commitHASH}</a>
+                <a href="https://github.com/abysmal26/website/commit/{commitHash}" target="_blank" rel="noreferrer" class="text-[#b4befe] hover:underline">{commitHash}</a>
             </div>
         {/await}
     </div>
