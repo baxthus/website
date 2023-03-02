@@ -43,15 +43,21 @@
 </script>
 
 <svelte:head>
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+        rel="stylesheet"
+        href="https://fonts.bunny.net/css?family=inter:600"
+    />
 </svelte:head>
 
 <!-- prettier-ignore -->
 <section class="p-8 sm:p-12 lg:p-24 lg:py-16 font-jetBrains z-10 flex flex-col sm:flex-row gap-y-10 justify-between">
     <div class="flex flex-col gap-7">
         <div class="min-h-[3em] lg:min-h-0" id="names">
-            <span class="text-[#cba6f7]"><span id="name1">abysmal</span><span class="font-japaneseFonts font-semibold" id="name2">アビスマル</span></span>
+            <span class="text-[#cba6f7]">
+                <span id="name1">abysmal</span>
+                <span class="font-japaneseFonts font-semibold" id="name2">アビスマル</span>
+            </span>
             <Workspace workspace={codeData?.workspace} />
             <Branch name={codeData?.branch} />
             <Language lang={codeData?.lang} />

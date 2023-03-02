@@ -22,7 +22,6 @@
         name="description"
         content="Quem não tem colírios usa óculos escuros"
     />
-    <!-- <meta rel="canonical" href="https://abysmal.eu.org"> -->
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -49,10 +48,10 @@
 
     <link rel="me" href="https://mastodon.social/@abysmal26" />
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/abysmal26/snippets/JetBrains-Mono/font.css"
+        href="https://fonts.bunny.net/css?family=jetbrains-mono:400,700"
     />
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
