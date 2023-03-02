@@ -51,7 +51,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
         rel="stylesheet"
-        href="https://fonts.bunny.net/css?family=jetbrains-mono:400,700"
+        href="https://fonts.bunny.net/css?family=jetbrains-mono:400,700&display=swap"
     />
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />

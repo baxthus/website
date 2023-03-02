@@ -6,7 +6,7 @@
         (res) =>
             res.json().then((json) => {
                 nodeVersion = json[0].tag_name;
-            }),
+            })
     );
 
     let langMap: Record<string, string>;

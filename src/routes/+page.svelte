@@ -46,7 +46,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
         rel="stylesheet"
-        href="https://fonts.bunny.net/css?family=inter:600"
+        href="https://fonts.bunny.net/css?family=inter:600&display=swap"
     />
 </svelte:head>
 
