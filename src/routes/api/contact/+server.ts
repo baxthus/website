@@ -1,5 +1,5 @@
 import type { RequestHandler, RequestEvent } from '@sveltejs/kit';
-import type Contact from '$lib/types/contact';
+import type Contact from '$lib/interfaces/Contact';
 import { CONTACT_WEBHOOK } from '$env/static/private';
 
 interface Embed {

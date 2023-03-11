@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+  @apply text-[#b4befe] hover:underline;
+}
+
 html {
   scrollbar-color: hsla(0, 0%, 100%, 0.289) transparent;
   scrollbar-width: thin;

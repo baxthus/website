@@ -145,7 +145,16 @@
                 href="https://instagram.com/Abysm0xC"
                 name="instagram"
                 />
-                <li><a href="/contact" class="text-[#b4befe] hover:underline">contact form</a></li>
+                <ProjectItem
+                href="/contact"
+                name="contact form"
+                newTab={false}
+                />
+                <ProjectItem
+                href="/blog"
+                name="blog (not very active)"
+                newTab={false}
+                />
             </ul>
         </div>
         <div>

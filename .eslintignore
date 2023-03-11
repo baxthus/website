@@ -17,3 +17,4 @@ svelte.config.js
 
 # shit
 src/routes/donate/+page.svelte
+src/routes/blog/**/+page.svelte

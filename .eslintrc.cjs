@@ -27,6 +27,7 @@ module.exports = {
 		'no-eval': 'error',
 		'no-implied-eval': 'error',
 		'prefer-promise-reject-errors': 'warn',
+		'@typescript-eslint/no-extra-semi': 'off',
 		// ///
 		'arrow-spacing': ['warn', { 'before': true, 'after': true }],
 		'comma-dangle': ['error', 'always-multiline'],
@@ -50,7 +51,9 @@ module.exports = {
 		'object-curly-spacing': ['error', 'always'],
 		'prefer-const': 'error',
 		'quotes': ['error', 'single'],
-		'semi': ['error', 'always'],
+		// https://github.com/typescript-eslint/typescript-eslint/issues/123
+		// 'semi': ['error', 'always'],
+		'semi': 'off',
 		'space-before-blocks': 'error',
 		'space-before-function-paren': ['error', {
 			'anonymous': 'always',

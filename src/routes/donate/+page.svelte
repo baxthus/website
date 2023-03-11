@@ -1,12 +1,19 @@
 <!-- prettier-ignore -->
 <script lang="ts">
-    let bitcoinWallet = 'bc1qspqkgle0u8n6a09rfv62nugn8ghkcvgh7nyj5w'
-    let ethereumWallet = '0x17c494ad62B80f54766f03726C623381977BB40a'
-    let moneroWallet = '475Ug7rLP78c5KDJ8NMrBWR6d95dMaceDK2sJy7cw9pRQu6u7As8eY118gAPRLQUdnBu4pAeUAm5hZyUS6uVwBBnNAXC3Bo'
-    let rippleWallet = 'rD7imyCvaWtWieVuyQyQmbiaW7Y8bEqXPb'
-    let dogecoinWallet = 'DSVScF3HyMWZV5V9h38S9iDM3vKPpSU7Ey'
-    let cardanoWallet = 'addr1q8n7gamnz80s4ef3wryveh6jm2verf7qksmmuu29kgyhf8h8u3mhxywlptjnzuxgen049k5ejxnupdphhec5tvsfwj0qdr93t0'
-    let solanaWallet = '3bzezrL71EvmAVC3w9GSoUCLDnd8zwYxRognhe3QBiZR'
+    import '$lib/app.css'
+
+    interface Wallet {
+        name: string
+        address: string
+    }
+
+    const wallets: Array<Wallet> = [
+        // cspell: disable-next
+        { name: 'Bitcoin', address: 'bc1qspqkgle0u8n6a09rfv62nugn8ghkcvgh7nyj5w' },
+        { name: 'Ethereum', address: '0x17c494ad62B80f54766f03726C623381977BB40a' },
+        // cspell: disable-next
+        { name: 'Monero', address: '475Ug7rLP78c5KDJ8NMrBWR6d95dMaceDK2sJy7cw9pRQu6u7As8eY118gAPRLQUdnBu4pAeUAm5hZyUS6uVwBBnNAXC3Bo' },
+    ]
 
     function copy(text: string) { navigator.clipboard.writeText(text) }
 </script>
@@ -18,43 +25,15 @@
             <span class="text-[#cba6f7]">make a donation with cryptocurrencies</span>
         </div>
         <div class="text-[#cdd6f4]">
-            <p>
-                Bitcoin: <code>{bitcoinWallet}</code><br>
-                <button on:click={() => copy(bitcoinWallet)}>Copy wallet</button>
-            </p>
-            <br>
-            <p>
-                Ethereum: <code>{ethereumWallet}</code><br>
-                <button on:click={() => copy(ethereumWallet)}>Copy wallet</button>
-            </p>
-            <br>
-            <p>
-                Monero: <code>{moneroWallet}</code><br>
-                <button on:click={() => copy(moneroWallet)}>Copy wallet</button>
-            </p>
-            <br>
-            <p>
-                Ripple: <code>{rippleWallet}</code><br>
-                <button on:click={() => copy(rippleWallet)}>Copy wallet</button>
-            </p>
-            <br>
-            <p>
-                Dogecoin: <code>{dogecoinWallet}</code><br>
-                <button on:click={() => copy(dogecoinWallet)}>Copy wallet</button>
-            </p>
-            <br>
-            <p>
-                Cardano: <code>{cardanoWallet}</code><br>
-                <button on:click={() => copy(cardanoWallet)}>Copy wallet</button>
-            </p>
-            <br>
-            <p>
-                Solana: <code>{solanaWallet}</code><br>
-                <button on:click={() => copy(solanaWallet)}>Copy wallet</button>
-            </p>
-        </div>
+            {#each wallets as { name, address }}
+                <p>
+                    {name}: <code>{address}</code><br>
+                    <button on:click={() => copy(address)}>Copy wallet</button>
+                </p>
+                <br>
+            {/each}
         <div>
-            <a href=".." class="text-[#b4befe] hover:underline">← back</a>
+            <a href="..">← back</a>
         </div>
     </div>
 </section>
