@@ -53,7 +53,7 @@
 <!-- prettier-ignore -->
 <section class="p-8 sm:p-12 lg:p-24 lg:py-16 font-jetBrains z-10 flex flex-col sm:flex-row gap-y-10 justify-between">
     <div class="flex flex-col gap-7">
-        <div class="min-h-[3em] lg:min-h-0" id="names">
+        <div class="min-h-0" id="names">
             <span class="text-[#cba6f7]">
                 <span id="name1">abysmal</span>
                 <span class="font-japaneseFonts font-semibold" id="name2">アビスマル</span>
@@ -161,7 +161,7 @@
             <h1><a href="/donate" class="text-[#b4befe] hover:underline">donation</a></h1>
         </div>
     </div>
-    <div class="text-[#cdd6f4] flex flex-col items-start sm:items-end gap-3 sm:gap-7 sm:text-right">
+    <div class="text-[#cdd6f4] flex flex-col items-start sm:items-end gap-5 sm:gap-7 sm:text-right">
         {#if !isTimeZoneSame}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="text-[#74c7ec] flex flex-col items-start sm:items-end hover:underline cursor-pointer" on:click={() => {timeZoneToggle = !timeZoneToggle;}}>

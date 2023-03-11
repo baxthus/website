@@ -12,7 +12,6 @@ interface PostsResponse {
 
 async function getPost(post: Response, file: string): Promise<Post> {
     const coolDocument = new DOMParser().parseFromString(await post.text(), 'text/xml');
-    console.log(coolDocument);
 
     const title = coolDocument.getElementsByTagName('title')[0].childNodes[0].nodeValue ?? '';
     const rawId = coolDocument.getElementsByTagName('title')[0].childNodes[0].nodeValue ?? '';

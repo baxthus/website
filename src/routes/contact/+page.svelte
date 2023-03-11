@@ -33,7 +33,7 @@
 </svelte:head>
 
 <div class="m-5">
-    <a href=".." class="mx-1 my-5 block font-jetBrains">← back</a>
+    <a href=".." class="mx-1 my-5 block font-[Inter] font-bold">◄ back</a>
     <div class="well">
         <form on:submit|preventDefault={submitForm}>
             <fieldset>

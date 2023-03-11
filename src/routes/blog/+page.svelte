@@ -26,7 +26,7 @@
 </svelte:head>
 
 <div class="m-2 font-[Inter]">
-    <a href=".." class="m-1 block font-jetBrains">← back</a>
+    <a href=".." class="mb-1 block font-bold">◄ back</a>
     {#if !posts.length}
         <h1 class="text-2xl bold">Loading...</h1>
     {/if}

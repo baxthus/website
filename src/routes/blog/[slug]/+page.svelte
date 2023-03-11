@@ -28,7 +28,7 @@
 </svelte:head>
 
 <div class="m-2 font-[Inter]">
-    <a href="." class="m-1 block font-jetBrains">← back</a>
+    <a href="." class="mb-3 block font-bold">◄ back</a>
     {#if post}
         <!-- TODO: handle preview image size -->
         {#if post.preview}

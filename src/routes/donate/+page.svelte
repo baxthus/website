@@ -1,12 +1,12 @@
-<!-- prettier-ignore -->
 <script lang="ts">
-    import '$lib/app.css'
+    import '$lib/app.css';
 
     interface Wallet {
-        name: string
-        address: string
+        name: string;
+        address: string;
     }
 
+    // prettier-ignore
     const wallets: Array<Wallet> = [
         // cspell: disable-next
         { name: 'Bitcoin', address: 'bc1qspqkgle0u8n6a09rfv62nugn8ghkcvgh7nyj5w' },
@@ -15,7 +15,9 @@
         { name: 'Monero', address: '475Ug7rLP78c5KDJ8NMrBWR6d95dMaceDK2sJy7cw9pRQu6u7As8eY118gAPRLQUdnBu4pAeUAm5hZyUS6uVwBBnNAXC3Bo' },
     ]
 
-    function copy(text: string) { navigator.clipboard.writeText(text) }
+    function copy(text: string) {
+        navigator.clipboard.writeText(text);
+    }
 </script>
 
 <!-- prettier-ignore -->
@@ -33,7 +35,7 @@
                 <br>
             {/each}
         <div>
-            <a href="..">← back</a>
+            <a href=".." class="font-bold">◄ back</a>
         </div>
     </div>
 </section>
