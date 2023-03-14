@@ -31,8 +31,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@xmldom/xmldom": "^0.8.6",
 		"luxon": "^3.2.1",
-		"sk-lanyard": "^0.1.7",
-		"xmldom": "^0.6.0"
+		"sk-lanyard": "^0.1.7"
 	}
 }
