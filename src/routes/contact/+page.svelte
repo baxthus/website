@@ -2,7 +2,7 @@
     import type Contact from '$lib/interfaces/Contact';
     import type User from '$lib/interfaces/User';
 
-    let user = {} as User;
+    const user = {} as User;
 
     enum SubmitStatus {
         SUBMITTING = 'submitting',
