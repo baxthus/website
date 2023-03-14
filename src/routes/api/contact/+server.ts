@@ -19,32 +19,32 @@ interface Body {
 }
 
 export const POST: RequestHandler = async ({ request }: RequestEvent): Promise<Response> => {
-    const content: Contact = await request.json();
+    const user: Contact = await request.json();
 
-    if (!content.originURL ||
-        !content.inputName ||
-        !content.inputEmail ||
-        !content.inputMessage
+    if (!user.url ||
+        !user.name ||
+        !user.email ||
+        !user.message
     ) {
         return new Response(JSON.stringify({ success: false }));
     }
 
     const embed: Embed = {
         title: 'Contact Form',
-        description: `From ${content.originURL} at <t:${String(Date.now() / 1000).split('.')[0]}:f>`,
+        description: `From ${user.url} at <t:${String(Date.now() / 1000).split('.')[0]}:f>`,
         color: 13346551,
         fields: [
             {
                 name: ':bust_in_silhouette: **Name**',
-                value: `\`${content.inputName}\``,
+                value: `\`${user.name}\``,
             },
             {
                 name: ':envelope: **Email**',
-                value: `\`${content.inputEmail}\``,
+                value: `\`${user.email}\``,
             },
             {
                 name: ':page_facing_up: **Message**',
-                value: `\`\`\`${content.inputMessage}\`\`\``,
+                value: `\`\`\`${user.message}\`\`\``,
             },
         ],
     };

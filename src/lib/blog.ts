@@ -1,11 +1,11 @@
 import type Post from './interfaces/Post';
 
-interface getSinglePostResponse {
+interface SinglePostResponse {
     success: boolean;
     post?: Post;
 }
 
-interface PostsResponse {
+interface AllPostsResponse {
     success: boolean;
     posts?: Array<Post>;
 }
@@ -38,7 +38,7 @@ async function getPost(post: Response, file: string): Promise<Post> {
     };
 }
 
-export async function getSinglePost(file: string): Promise<getSinglePostResponse> {
+export async function getSinglePost(file: string): Promise<SinglePostResponse> {
     const post = await fetch(`https://raw.githubusercontent.com/Abysm0xC/blog/main/${file}`);
     if (post.status !== 200) return { success: false };
 
@@ -48,7 +48,7 @@ export async function getSinglePost(file: string): Promise<getSinglePostResponse
     };
 }
 
-export async function getPosts(): Promise<PostsResponse> {
+export async function getAllPosts(): Promise<AllPostsResponse> {
     const res = await fetch('https://raw.githubusercontent.com/Abysm0xC/blog/main/posts.json');
     if (res.status !== 200) {
         return { success: false };

@@ -1,6 +1,5 @@
-export default interface Contact {
-    originURL: string;
-    inputName: string;
-    inputEmail: string;
-    inputMessage: string;
+import type User from '$lib/interfaces/User';
+
+export default interface Contact extends User {
+    url: string;
 }

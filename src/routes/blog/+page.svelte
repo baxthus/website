@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { getPosts } from '$lib/blog';
+    import { getAllPosts } from '$lib/blog';
     import type Post from '$lib/interfaces/Post';
     import { onMount } from 'svelte';
 
     let posts: Array<Post> = [];
 
     onMount(async () => {
-        const res = await getPosts();
+        const res = await getAllPosts();
         if (!res.success) {
             document.body.getElementsByClassName('post-lint')[0].innerHTML =
                 'Error loading posts';

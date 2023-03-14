@@ -1,19 +1,25 @@
 <script lang="ts">
     import type Contact from '$lib/interfaces/Contact';
+    import type User from '$lib/interfaces/User';
 
-    let inputName: string;
-    let inputEmail: string;
-    let inputMessage: string;
-    let submitStatus: string;
+    let user = {} as User;
+
+    enum SubmitStatus {
+        SUBMITTING = 'submitting',
+        SUCCESS = 'success',
+        FAILED = 'failed',
+    }
+
+    let submitStatus: SubmitStatus;
 
     const submitForm = async () => {
-        submitStatus = 'submitting';
+        submitStatus = SubmitStatus.SUBMITTING;
 
         const data: Contact = {
-            originURL: window.location.protocol + '//' + window.location.host,
-            inputName,
-            inputEmail,
-            inputMessage,
+            url: window.location.protocol + '//' + window.location.host,
+            name: user.name,
+            email: user.email,
+            message: user.message,
         };
 
         const res = await (
@@ -24,16 +30,22 @@
             })
         ).json();
 
-        res.success ? (submitStatus = 'success') : (submitStatus = 'failed');
+        res.success
+            ? (submitStatus = SubmitStatus.SUCCESS)
+            : (submitStatus = SubmitStatus.FAILED);
     };
 </script>
 
 <svelte:head>
     <link rel="stylesheet" href="https://tilde.team/css/hacker.css" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+        rel="stylesheet"
+        href="https://fonts.bunny.net/css?family=inter:400,700&display=swap"
+    />
 </svelte:head>
 
 <div class="m-5">
-    <a href=".." class="mx-1 my-5 block font-[Inter] font-bold">◄ back</a>
     <div class="well">
         <form on:submit|preventDefault={submitForm}>
             <fieldset>
@@ -43,7 +55,7 @@
                         type="text"
                         placeholder="Name"
                         class="form-control"
-                        bind:value={inputName}
+                        bind:value={user.name}
                         required
                     />
                 </div>
@@ -52,7 +64,7 @@
                         type="email"
                         placeholder="Email"
                         class="form-control"
-                        bind:value={inputEmail}
+                        bind:value={user.email}
                         required
                     />
                     <!-- prettier-ignore -->
@@ -63,7 +75,7 @@
                         cols="3"
                         class="form-control"
                         placeholder="Your message"
-                        bind:value={inputMessage}
+                        bind:value={user.message}
                         required
                     />
                 </div>
@@ -74,12 +86,13 @@
             </fieldset>
         </form>
 
-        {#if submitStatus === 'submitting'}
+        {#if submitStatus === SubmitStatus.SUBMITTING}
             <div class="alert alert-info">Submitting...</div>
-        {:else if submitStatus === 'success'}
+        {:else if submitStatus === SubmitStatus.SUCCESS}
             <div class="alert alert-success">Submission success</div>
-        {:else if submitStatus === 'failed'}
+        {:else if submitStatus === SubmitStatus.FAILED}
             <div class="alert alert-danger">Submission failed</div>
         {/if}
     </div>
+    <a href=".." class="mx-1 block font-[Inter] font-bold">◄ back</a>
 </div>
