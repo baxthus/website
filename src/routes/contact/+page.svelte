@@ -10,10 +10,10 @@
         FAILED = 'failed',
     }
 
-    let submitStatus: SubmitStatus;
+    let submitState: SubmitStatus;
 
     const submitForm = async () => {
-        submitStatus = SubmitStatus.SUBMITTING;
+        submitState = SubmitStatus.SUBMITTING;
 
         const data: Contact = {
             url: window.location.protocol + '//' + window.location.host,
@@ -31,8 +31,8 @@
         ).json();
 
         res.success
-            ? (submitStatus = SubmitStatus.SUCCESS)
-            : (submitStatus = SubmitStatus.FAILED);
+            ? (submitState = SubmitStatus.SUCCESS)
+            : (submitState = SubmitStatus.FAILED);
     };
 </script>
 
@@ -86,11 +86,11 @@
             </fieldset>
         </form>
 
-        {#if submitStatus === SubmitStatus.SUBMITTING}
+        {#if submitState === SubmitStatus.SUBMITTING}
             <div class="alert alert-info">Submitting...</div>
-        {:else if submitStatus === SubmitStatus.SUCCESS}
+        {:else if submitState === SubmitStatus.SUCCESS}
             <div class="alert alert-success">Submission success</div>
-        {:else if submitStatus === SubmitStatus.FAILED}
+        {:else if submitState === SubmitStatus.FAILED}
             <div class="alert alert-danger">Submission failed</div>
         {/if}
     </div>

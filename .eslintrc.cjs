@@ -18,7 +18,7 @@ module.exports = {
 		node: true
 	},
 	rules: {
-		'no-shadow': 'error',
+		// 'no-shadow': 'error',
 		'@typescript-eslint/no-shadow': ['error'],
 		'no-use-before-define': 'error',
 		'@typescript-eslint/no-use-before-define': ['error'],
