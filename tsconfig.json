@@ -10,6 +10,8 @@
 		"sourceMap": true,
 		"strict": true,
 		"lib": ["ES2021", "DOM"],
+		// this is needed because of the ".svelte-kit/tsconfig.json" extends
+		"ignoreDeprecations": "5.0",
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//

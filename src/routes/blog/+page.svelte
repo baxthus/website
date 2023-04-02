@@ -1,19 +1,22 @@
 <script lang="ts">
     import { getAllPosts } from '$lib/blog';
-    import type Post from '$lib/interfaces/Post';
+    import type { Post } from '$lib/interfaces/Blog';
     import { onMount } from 'svelte';
 
     let posts: Array<Post> = [];
+    let postsStatus: 'loading' | 'error' | 'success' = 'loading';
 
     onMount(async () => {
         const res = await getAllPosts();
         if (!res.success) {
-            document.body.getElementsByClassName('post-lint')[0].innerHTML =
-                'Error loading posts';
+            postsStatus = 'error';
             return;
         }
+
         posts = res.posts ?? [];
         posts.reverse();
+
+        postsStatus = 'success';
     });
 </script>
 
@@ -25,10 +28,12 @@
     />
 </svelte:head>
 
-<div class="m-2 font-[Inter]">
+<div class="post-list m-2 font-[Inter]">
     <a href=".." class="mb-1 block font-bold">◄ back</a>
-    {#if !posts.length}
+    {#if postsStatus === 'loading'}
         <h1 class="text-2xl bold">Loading...</h1>
+    {:else if postsStatus === 'error'}
+        <h1 class="text-2xl bold">Error loading posts</h1>
     {/if}
     {#each posts as post}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -38,7 +43,11 @@
         >
             <div class="m-1">
                 {#if post.preview}
-                    <img src={post.preview} alt="post icon" />
+                    <img
+                        src={post.preview}
+                        alt="post preview"
+                        class="max-w-xs mb-1"
+                    />
                 {/if}
                 <h1 class="text-xl font-bold">{post.shortenedTitle}</h1>
                 <h2>{post.date}</h2>

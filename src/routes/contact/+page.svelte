@@ -1,19 +1,12 @@
 <script lang="ts">
-    import type Contact from '$lib/interfaces/Contact';
-    import type User from '$lib/interfaces/User';
+    import type { User, Contact } from '$lib/interfaces/Contact';
 
     const user = {} as User;
 
-    enum SubmitStatus {
-        SUBMITTING = 'submitting',
-        SUCCESS = 'success',
-        FAILED = 'failed',
-    }
-
-    let submitState: SubmitStatus;
+    let submitStatus: 'submitting' | 'success' | 'failed';
 
     const submitForm = async () => {
-        submitState = SubmitStatus.SUBMITTING;
+        submitStatus = 'submitting';
 
         const data: Contact = {
             url: window.location.protocol + '//' + window.location.host,
@@ -30,9 +23,7 @@
             })
         ).json();
 
-        res.success
-            ? (submitState = SubmitStatus.SUCCESS)
-            : (submitState = SubmitStatus.FAILED);
+        res.success ? (submitStatus = 'success') : (submitStatus = 'failed');
     };
 </script>
 
@@ -86,11 +77,11 @@
             </fieldset>
         </form>
 
-        {#if submitState === SubmitStatus.SUBMITTING}
+        {#if submitStatus === 'submitting'}
             <div class="alert alert-info">Submitting...</div>
-        {:else if submitState === SubmitStatus.SUCCESS}
+        {:else if submitStatus === 'success'}
             <div class="alert alert-success">Submission success</div>
-        {:else if submitState === SubmitStatus.FAILED}
+        {:else if submitStatus === 'failed'}
             <div class="alert alert-danger">Submission failed</div>
         {/if}
     </div>

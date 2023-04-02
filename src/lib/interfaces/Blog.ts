@@ -1,4 +1,4 @@
-export default interface Post {
+export interface Post {
     title: string;
     id: string;
     file: string;

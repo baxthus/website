@@ -1,5 +1,9 @@
-import type User from '$lib/interfaces/User';
+export interface User {
+    name: string;
+    email: string;
+    message: string;
+}
 
-export default interface Contact extends User {
+export interface Contact extends User {
     url: string;
 }

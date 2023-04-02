@@ -1,4 +1,4 @@
-import type Post from './interfaces/Post';
+import type { Post } from './interfaces/Blog';
 
 interface SinglePostResponse {
     success: boolean;
@@ -10,18 +10,18 @@ interface AllPostsResponse {
     posts?: Array<Post>;
 }
 
-async function getPost(post: Response, file: string): Promise<Post> {
+async function processPost(post: Response, file: string): Promise<Post> {
     const coolDocument = new DOMParser().parseFromString(await post.text(), 'text/xml');
 
     const title = coolDocument.getElementsByTagName('title')[0].childNodes[0].nodeValue ?? '';
-    const rawId = coolDocument.getElementsByTagName('title')[0].childNodes[0].nodeValue ?? '';
-    const id = rawId.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+    const id = title.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+    const preview = coolDocument.getElementsByTagName('preview')[0].childNodes[0].nodeValue ?? undefined;
     // Get the multiline content of the post.
     // Add a line break to the new lines, except for the first one.
     const rawContent = coolDocument.getElementsByTagName('content')[0].innerHTML ?? '';
     const content = rawContent.replace(/\n/g, '<br />').replace('<br />', '');
 
-    // Limit the content to 100 characters
+    // Limit the content to 200 characters
     const shortenedContent = content.substring(0, 200) + (content.length > 200 ? '...' : '');
     // Limit the title to 50 characters
     const shortenedTitle = title.substring(0, 50) + (title.length > 50 ? '...' : '');
@@ -34,7 +34,7 @@ async function getPost(post: Response, file: string): Promise<Post> {
         content,
         shortenedContent,
         shortenedTitle,
-        preview: undefined,
+        preview,
     };
 }
 
@@ -44,28 +44,31 @@ export async function getSinglePost(file: string): Promise<SinglePostResponse> {
 
     return {
         success: true,
-        post: await getPost(post, file),
+        post: await processPost(post, file),
     };
 }
 
 export async function getAllPosts(): Promise<AllPostsResponse> {
     const res = await fetch('https://raw.githubusercontent.com/Abysm0xC/blog/main/posts.json');
-    if (res.status !== 200) {
-        return { success: false };
-    }
+    if (res.status !== 200) return { success: false };
+
     const postList = await res.json() as Array<string>;
     postList.reverse();
 
-    const postsResponse = postList.map(async (post) => {
+    const postsResponse = postList.map(async (post): Promise<Response> => {
         return await fetch(`https://raw.githubusercontent.com/Abysm0xC/blog/main/${post}`);
     });
 
-    const postsPromised = Promise.all(postsResponse).then((posts) => {
-        return posts.map(async (post): Promise<Post> => getPost(post, postList[posts.indexOf(post)]));
+    const postsPromised = await Promise.all(postsResponse);
+
+    if (postsPromised.some((post) => post.status !== 200)) return { success: false };
+
+    const posts = postsPromised.map(async (post): Promise<Post> => {
+        return processPost(post, postList[postsPromised.indexOf(post)])
     });
 
     return {
         success: true,
-        posts: await Promise.all(await postsPromised),
+        posts: await Promise.all(posts),
     };
 }

@@ -1,9 +1,11 @@
 name: Lint
+run-name: Lint for commit ${{ github.sha }}
 
 on: push
 
 jobs:
-  build:
+  lint:
+    name: Run ESLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
