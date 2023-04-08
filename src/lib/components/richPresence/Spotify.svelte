@@ -12,7 +12,7 @@
                 href="https://open.spotify.com/track/{data.spotify.track_id}"
                 target="_blank"
                 rel="noreferrer"
-                class="hover: underline">{data.spotify.song}</a
+                class="hover:underline">{data.spotify.song}</a
             ></span
         >
         <span class="text-[#89dceb]">{data.spotify.artist}</span>
@@ -23,7 +23,7 @@
                 'https://i.scdn.co/image/',
             )}
             alt="Album cover"
-            class="w-28 mt-1"
+            class="w-36 mt-1"
         />
     </div>
 {/if}
