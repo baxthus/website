@@ -1,41 +1,21 @@
 <script lang="ts">
-    import { DateTime } from 'luxon';
     import ProjectItem from '$lib/components/ProjectItem.svelte';
     import Branch from '$lib/components/Branch.svelte';
     import Language from '$lib/components/Language.svelte';
     import Workspace from '$lib/components/Workspace.svelte';
     import { getCodeData, getOtherActivities } from '$lib/richPresence';
     import { useLanyard } from 'sk-lanyard';
-    import getCommit from '$lib/getCommit';
-
-    const commitHash = getCommit();
-
-    const timeZone = 'Etc/GMT+3';
-    // prettier-ignore
-    const isTimeZoneSame = Intl.DateTimeFormat().resolvedOptions().timeZone === timeZone;
-    let timeZoneToggle = false;
-
-    $: timeFormatter = new Intl.DateTimeFormat('en-US', {
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-        timeZone: timeZoneToggle ? timeZone : undefined,
-    });
-    $: dateFormatter = new Intl.DateTimeFormat('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-        timeZoneName: 'short',
-        timeZone: timeZoneToggle ? timeZone : undefined,
-    });
+    import CodeIdling from '$lib/components/richPresence/CodeIdling.svelte';
+    import Time from '$lib/components/Time.svelte';
+    import Spotify from '$lib/components/richPresence/Spotify.svelte';
+    import Code from '$lib/components/richPresence/Code.svelte';
+    import Other from '$lib/components/richPresence/Other.svelte';
+    import Commit from '$lib/components/Commit.svelte';
 
     let now = new Date();
     setInterval(() => {
         now = new Date();
     }, 100);
-
-    $: date = dateFormatter.format(now);
-    $: time = timeFormatter.format(now);
 
     const data = useLanyard({ method: 'ws', id: '505432621086670872' });
     $: codeData = getCodeData($data);
@@ -162,59 +142,14 @@
         </div>
     </div>
     <div class="text-[#cdd6f4] flex flex-col items-start sm:items-end gap-5 sm:gap-7 sm:text-right">
-        {#if !isTimeZoneSame}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div class="text-[#74c7ec] flex flex-col items-start sm:items-end hover:underline cursor-pointer" on:click={() => {timeZoneToggle = !timeZoneToggle;}}>
-                <span>{date}</span>
-                <span>{time}</span>
-            </div>
-        {:else}
-            <div class="text-[#74c7ec] flex flex-col items-start sm:items-end">
-                <span>{date}</span>
-                <span>{time}</span>
-            </div>
-        {/if}
-        {#if $data?.spotify}
-            <div class="flex flex-col items-start sm:items-end">
-                <h1 class="font-bold">listening to</h1>
-                <span class="text-[#f5c2e7]"><a href="https://open.spotify.com/track/{$data.spotify?.track_id}" target="_blank" rel="noreferrer" class="hover:underline">{$data.spotify.song}</a></span>
-                <span class="text-[#89dceb]">{$data.spotify.artist}</span>
-                <span class="text-[#94e2d5]">{$data.spotify.album}</span>
-                <img src="{$data.spotify.album_art_url.replace('spotify:', 'https://i.scdn.co/image/')}" alt="Album cover" style="width: 7rem;" class="mt-1">
-            </div>
-        {/if}
-        {#if codeData?.idling}
-            <div class="flex flex-col items-start sm:items-end">
-                <span class="font-bold">vs code</span>
-                <span class="text-[#f5c2e7]">currently idling</span>
-            </div>
-        {/if}
-        {#if codeData && !codeData.idling}
-            <div class="flex flex-col items-start sm:items-end">
-                <span class="font-bold">vs code</span>
-                <span class="text-[#f5c2e7]">{codeData.workspace?.replace(/[\u200B-\u200D\uFEFF]/g, '')}{codeData.branch ? `/${codeData.branch}` : ''}</span>
-                <span>writing <span class="text-[#89dceb]">{codeData.lang}</span></span>
-            </div>
-        {/if}
-        {#if otherActivities}
-            {#each otherActivities as activity}
-                <div class="flex flex-col items-start sm:items-end">
-                    <span>playing <span class="text-[#f5c2e7]">{activity.name}</span></span>
-                    {#if activity.start}
-                        <span>for <span class="text-[#89dceb]">{DateTime.fromJSDate(activity.start).toRelative({ base: DateTime.fromJSDate(now), locale: 'en-US' })?.replace(' ago', '')}</span></span>
-                    {/if}
-                </div>
-            {/each}
-        {/if}
-        {#await commitHash}
-            <div>
-                Loading...
-            </div>
-        {:then commitHash}
-            <div>
-                <a href="https://github.com/abysmal26/website/commit/{commitHash}" target="_blank" rel="noreferrer" class="text-[#b4befe] hover:underline">{commitHash}</a>
-            </div>
-        {/await}
+        <Time now={now} />
+        <!-- Discord Rich Presence -->
+        <Spotify data={$data} />
+        <Code data={codeData} />
+        <CodeIdling data={codeData} />
+        <Other data={otherActivities} now={now} />
+        <!-- /// -->
+        <Commit />
     </div>
 </section>
 

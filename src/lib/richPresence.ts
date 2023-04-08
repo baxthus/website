@@ -2,14 +2,14 @@
 
 import type { LanyardData } from 'sk-lanyard';
 
-interface VSCodeData {
+export interface VSCodeData {
     lang?: string,
     workspace?: string,
     branch?: string,
     idling?: boolean
 }
 
-interface Activity {
+export interface Activity {
     name: string,
     start?: Date
 }
