@@ -58,9 +58,5 @@
 </svelte:head>
 
 <main class="text-[#cdd6f4]">
-    <div class="mx-5 my-4">
-        <h1>We are <b>Under Maintenance</b></h1>
-        <p>We will be back on Wednesday, April 12th, 2023</p>
-    </div>
-    <!-- <slot /> -->
+    <slot />
 </main>
