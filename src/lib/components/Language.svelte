@@ -2,15 +2,15 @@
     import { onMount } from 'svelte';
 
     export let lang = '';
-    let nodeVersion: string = 'loading...';
+    let nodeVersion = 'loading...';
 
     onMount(async () => {
         await fetch(
-            'https://api.github.com/repos/nodejs/node/releases?per_page=1'
+            'https://api.github.com/repos/nodejs/node/releases?per_page=1',
         ).then((res) =>
             res.json().then((json) => {
                 nodeVersion = json[0].tag_name;
-            })
+            }),
         );
     });
 

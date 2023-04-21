@@ -12,7 +12,7 @@
     onMount(async () => {
         const res: Commit = await (
             await fetch(
-                'https://api.github.com/repos/baxthus/website/git/refs/heads/main'
+                'https://api.github.com/repos/baxthus/website/git/refs/heads/main',
             )
         ).json();
         commit = res.object.sha.slice(0, 7);
