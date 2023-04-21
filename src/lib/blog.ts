@@ -39,7 +39,7 @@ async function processPost(post: Response, file: string): Promise<Post> {
 }
 
 export async function getSinglePost(file: string): Promise<SinglePostResponse> {
-    const post = await fetch(`https://raw.githubusercontent.com/Abysm0xC/blog/main/${file}`);
+    const post = await fetch(`https://raw.githubusercontent.com/baxthus/blog/main/${file}`);
     if (post.status !== 200) return { success: false };
 
     return {
@@ -49,14 +49,14 @@ export async function getSinglePost(file: string): Promise<SinglePostResponse> {
 }
 
 export async function getAllPosts(): Promise<AllPostsResponse> {
-    const res = await fetch('https://raw.githubusercontent.com/Abysm0xC/blog/main/posts.json');
+    const res = await fetch('https://raw.githubusercontent.com/baxthus/blog/main/posts.json');
     if (res.status !== 200) return { success: false };
 
     const postList = await res.json() as Array<string>;
     postList.reverse();
 
     const postsResponse = postList.map(async (post): Promise<Response> => {
-        return await fetch(`https://raw.githubusercontent.com/Abysm0xC/blog/main/${post}`);
+        return await fetch(`https://raw.githubusercontent.com/baxthus/blog/main/${post}`);
     });
 
     const postsPromised = await Promise.all(postsResponse);

@@ -55,27 +55,27 @@
             <h1 class="text-[#89b4fa]">projects</h1>
             <ul class="list-disc list-inside text-[#7f849c]">
                 <ProjectItem
-                href="https://github.com/Abysm0xC/website"
+                href="https://github.com/baxthus/website"
                 name="website"
                 description="this website"
                 />
                 <ProjectItem
-                href="https://github.com/Abysm0xC/AdramelechBot"
+                href="https://github.com/baxthus/AdramelechBot"
                 name="adramelech bot"
                 description="my discord bot"
                 />
                 <ProjectItem
-                href="https://github.com/Abysm0xC/errorpages"
+                href="https://github.com/baxthus/errorpages"
                 name="error pages"
                 description="error pages template"
                 />
                 <ProjectItem
-                href="https://github.com/Abysm0xC/digital-clock"
+                href="https://github.com/baxthus/digital-clock"
                 name="digital clock"
                 description="a digital clock example in svelte"
                 />
                 <ProjectItem
-                href="https://github.com/Abysm0xC/tests"
+                href="https://github.com/baxthus/tests"
                 name="random scripts"
                 description="my random scripts"
                 />
@@ -90,7 +90,7 @@
                 description="find all my socials here"
                 />
                 <ProjectItem
-                href="https://t.me/Abysm0xC"
+                href="https://t.me/baxthus"
                 name="telegram"
                 description="best way to contact me"
                 />
@@ -114,15 +114,15 @@
                 name="status page"
                 />
                 <ProjectItem
-                href="https://github.com/Abysm0xC"
+                href="https://github.com/baxthus"
                 name="github"
                 />
                 <ProjectItem
-                href="https://twitter.com/Abysm0xC"
+                href="https://twitter.com/baxthus"
                 name="twitter"
                 />
                 <ProjectItem
-                href="https://instagram.com/Abysm0xC"
+                href="https://instagram.com/baxthus"
                 name="instagram"
                 />
                 <ProjectItem

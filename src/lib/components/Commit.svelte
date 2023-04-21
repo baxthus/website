@@ -12,7 +12,7 @@
     onMount(async () => {
         const res: Commit = await (
             await fetch(
-                'https://api.github.com/repos/Abysm0xC/website/git/refs/heads/main',
+                'https://api.github.com/repos/baxthus/website/git/refs/heads/main'
             )
         ).json();
         commit = res.object.sha.slice(0, 7);
@@ -24,7 +24,7 @@
 {:then}
     <div>
         <a
-            href="https://github.com/abysmal26/website/commit/{commit}"
+            href="https://github.com/baxthus/website/commit/{commit}"
             target="_blank"
             rel="noreferrer"
             class="text-[#b4befe] hover:underline">{commit}</a

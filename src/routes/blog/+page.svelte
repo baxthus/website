@@ -1,5 +1,6 @@
 <script lang="ts">
     import { getAllPosts } from '$lib/blog';
+    import Back from '$lib/components/Back.svelte';
     import type { Post } from '$lib/interfaces/Blog';
     import { onMount } from 'svelte';
 
@@ -29,7 +30,7 @@
 </svelte:head>
 
 <div class="post-list m-2 font-[Inter]">
-    <a href=".." class="mb-1 block font-bold">◄ back</a>
+    <Back class="mb-1" />
     {#if postsStatus === 'loading'}
         <h1 class="text-2xl bold">Loading...</h1>
     {:else if postsStatus === 'error'}

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Back from '$lib/components/Back.svelte';
     import type { User, Contact } from '$lib/interfaces/Contact';
 
     const user = {} as User;
@@ -85,5 +86,5 @@
             <div class="alert alert-danger">Submission failed</div>
         {/if}
     </div>
-    <a href=".." class="mx-1 block font-[Inter] font-bold">◄ back</a>
+    <Back class="mx-1" />
 </div>

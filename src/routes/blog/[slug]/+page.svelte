@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { getSinglePost } from '$lib/blog';
+    import Back from '$lib/components/Back.svelte';
     import type { Post } from '$lib/interfaces/Blog';
     import { onMount } from 'svelte';
 
@@ -31,9 +32,8 @@
 </svelte:head>
 
 <div class="m-2 font-[Inter]">
-    <a href="." class="mb-3 block font-bold">◄ back</a>
+    <Back class="mb-3" href="." />
     {#if postStatus === 'success'}
-        <!-- TODO: handle preview image size -->
         {#if post.preview}
             <img src={post.preview} alt="post preview" class="max-w-xs mb-1" />
         {/if}

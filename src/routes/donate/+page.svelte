@@ -1,5 +1,6 @@
 <script lang="ts">
     import '$lib/app.css';
+    import Back from '$lib/components/Back.svelte';
 
     interface Wallet {
         name: string;
@@ -14,8 +15,6 @@
         // cspell: disable-next
         { name: 'Monero', address: '475Ug7rLP78c5KDJ8NMrBWR6d95dMaceDK2sJy7cw9pRQu6u7As8eY118gAPRLQUdnBu4pAeUAm5hZyUS6uVwBBnNAXC3Bo' },
     ]
-
-    const copy = (text: string) => navigator.clipboard.writeText(text);
 </script>
 
 <svelte:head>
@@ -35,25 +34,17 @@
         <div class="text-[#cdd6f4]">
             {#each wallets as { name, address }}
                 <p>
-                    {name}: <code>{address}</code><br>
-                    <button on:click={() => copy(address)}>Copy wallet</button>
+                    {name}: <code class="bg-[#31324] border border-[#45475a] rounded py-px px-1" style="word-break: break-all;">{address}</code><br>
+                    <button
+                    class="bg-[#313244] border border-[#6c7086] rounded hover:bg-[#6c7086] hover:text-[#181825] py-0.5 px-2 mt-1"
+                    on:click={() => navigator.clipboard.writeText(address)}
+                    >Copy wallet</button>
                 </p>
                 <br>
             {/each}
         </div>
         <div>
-            <a href=".." class="font-[Inter] font-bold">◄ back</a>
+            <Back />
         </div>
     </div>
 </section>
-
-<style>
-    code {
-        @apply bg-[#313244] border border-[#45475a] rounded py-px px-1;
-        word-break: break-all;
-    }
-
-    button {
-        @apply bg-[#313244] border border-[#6c7086] rounded hover:bg-[#6c7086] hover:text-[#181825] py-0.5 px-2 mt-1;
-    }
-</style>
