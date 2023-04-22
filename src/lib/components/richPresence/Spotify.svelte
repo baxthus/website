@@ -18,7 +18,9 @@
                 class="hover:underline">{data.spotify.song}</a
             ></span
         >
-        <span class="text-[#89dceb]">{data.spotify.artist}</span>
+        <span class="text-[#89dceb]"
+            >{data.spotify.artist.replace(';', ',')}</span
+        >
         <span class="text-[#94e2d5]">{data.spotify.album}</span>
         <a
             href={getLink(data.spotify.track_id)}
@@ -28,7 +30,7 @@
             <img
                 src={data.spotify.album_art_url.replace(
                     'spotify:',
-                    'https://i.scdn.co/image/',
+                    'https://i.scdn.co/image/'
                 )}
                 alt="Album cover"
                 class="w-36 mt-1"
