@@ -30,7 +30,7 @@
             <img
                 src={data.spotify.album_art_url.replace(
                     'spotify:',
-                    'https://i.scdn.co/image/'
+                    'https://i.scdn.co/image/',
                 )}
                 alt="Album cover"
                 class="w-36 mt-1"
