@@ -15,6 +15,7 @@ async function processPost(post: Response, file: string): Promise<Post> {
 
     const title = coolDocument.getElementsByTagName('title')[0].childNodes[0].nodeValue ?? '';
     const id = title.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+    const date = coolDocument.getElementsByTagName('date')[0].childNodes[0].nodeValue ?? '';
     const preview = coolDocument.getElementsByTagName('preview')[0].childNodes[0].nodeValue ?? undefined;
     // Get the multiline content of the post.
     // Add a line break to the new lines, except for the first one.
@@ -30,7 +31,7 @@ async function processPost(post: Response, file: string): Promise<Post> {
         title,
         id,
         file,
-        date: coolDocument.getElementsByTagName('date')[0].childNodes[0].nodeValue ?? '',
+        date,
         content,
         shortenedContent,
         shortenedTitle,

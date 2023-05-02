@@ -95,14 +95,9 @@
                 description="best way to contact me"
                 />
                 <ProjectItem
-                href="mailto:abysmal@ttm.sh"
-                name="abysmal@ttm.sh"
-                description="contact email"
-                />
-                <ProjectItem
                 href="mailto:baxthus@proton.me"
                 name="baxthus@proton.me"
-                description="main email"
+                description="email"
                 />
                 <ProjectItem
                 href="/abysmal.asc"
