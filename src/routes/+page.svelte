@@ -95,9 +95,9 @@
                 description="best way to contact me"
                 />
                 <ProjectItem
-                href="mailto:baxthus@proton.me"
-                name="baxthus@proton.me"
-                description="email"
+                href="mailto:baxthus@duck.com"
+                name="baxthus@duck.com"
+                description="contact email"
                 />
                 <ProjectItem
                 href="/abysmal.asc"
