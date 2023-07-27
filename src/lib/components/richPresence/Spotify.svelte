@@ -19,7 +19,7 @@
             ></span
         >
         <span class="text-[#89dceb]"
-            >{data.spotify.artist.replace(';', ',')}</span
+            >{data.spotify.artist.replaceAll(';', ',')}</span
         >
         <span class="text-[#94e2d5]">{data.spotify.album}</span>
         <a

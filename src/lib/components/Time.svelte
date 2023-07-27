@@ -26,6 +26,7 @@
 
 {#if !isTimeZoneSame}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div
         class="text-[#74c7ec] flex flex-col items-start sm:items-end hover:underline cursor-pointer"
         on:click={() => {

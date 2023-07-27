@@ -7,4 +7,4 @@ export interface Post {
     shortenedContent: string;
     shortenedTitle: string;
     preview?: string;
-};
+}
