@@ -85,7 +85,7 @@
             <h1 class="text-[#89b4fa]">links</h1>
             <ul class="list-disc list-inside text-[#7f849c]">
                 <ProjectItem
-                href="https://ayo.so/abysmal26"
+                href="https://ayo.so/baxthus"
                 name="ayo"
                 description="find all my socials here"
                 />
