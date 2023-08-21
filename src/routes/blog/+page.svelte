@@ -47,7 +47,6 @@
 				<h1 class="text-xl bold">{post.shortenedTitle}</h1>
 				<h2>{post.date}</h2>
 				<br />
-				<!-- It's a static site, I don't care about XSS -->
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				<div>{@html post.shortenedContent}</div>
 			</div>

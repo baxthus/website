@@ -1,48 +1,48 @@
 [
-  {
-    "name": "ayo",
-    "description": "find all my socials here",
-    "url": "https://ayo.so/baxthus"
-  },
-  {
-    "name": "telegram",
-    "description": "best way to contact me",
-    "url": "https://t.me/baxthus"
-  },
-  {
-    "name": "baxthus@duck.com",
-    "description": "contact email",
-    "url": "mailto:baxthus@duck.com"
-  },
-  {
-    "name": "pubkey",
-    "description": "my public gpg key",
-    "url": "/baxthus.asc"
-  },
-  {
-    "name": "status page",
-    "url": "https://status.abysmal.eu.org"
-  },
-  {
-    "name": "github",
-    "url": "https://github.com/baxthus"
-  },
-  {
-    "name": "twitter",
-    "url": "https://twitter.com/baxthus"
-  },
-  {
-    "name": "instagram",
-    "url": "https://instagram.com/baxthus"
-  },
-  {
-    "name": "contact form",
-    "url": "/contact",
-    "newTab": false
-  },
-  {
-    "name": "blog (not perfect yet)",
-    "url": "/blog",
-    "newTab": false
-  }
+	{
+		"name": "ayo",
+		"description": "find all my socials here",
+		"url": "https://ayo.so/baxthus"
+	},
+	{
+		"name": "telegram",
+		"description": "best way to contact me",
+		"url": "https://t.me/baxthus"
+	},
+	{
+		"name": "baxthus@duck.com",
+		"description": "contact email",
+		"url": "mailto:baxthus@duck.com"
+	},
+	{
+		"name": "pubkey",
+		"description": "my public gpg key",
+		"url": "/baxthus.asc"
+	},
+	{
+		"name": "status page",
+		"url": "https://status.abysmal.eu.org"
+	},
+	{
+		"name": "github",
+		"url": "https://github.com/baxthus"
+	},
+	{
+		"name": "twitter",
+		"url": "https://twitter.com/baxthus"
+	},
+	{
+		"name": "instagram",
+		"url": "https://instagram.com/baxthus"
+	},
+	{
+		"name": "contact form",
+		"url": "/contact",
+		"newTab": false
+	},
+	{
+		"name": "blog (not perfect yet)",
+		"url": "/blog",
+		"newTab": false
+	}
 ]

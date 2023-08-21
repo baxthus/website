@@ -21,5 +21,6 @@
 </script>
 
 {#if langMap[lang]}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<span class="text-ctp-text inline-block"> via {@html langMap[lang]}</span>
 {/if}
