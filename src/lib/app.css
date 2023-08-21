@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+    @apply text-ctp-lavender underline hover:text-ctp-blue transition-colors duration-200;
+}
+
+html {
+    @apply text-ctp-text bg-ctp-crust font-jetBrains;
+    scrollbar-color: hsla(0, 0%, 100%, 0.289) transparent;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 100%, 0.289);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-button
+::-webkit-scrollbar-corner {
+    display: none;
+}
