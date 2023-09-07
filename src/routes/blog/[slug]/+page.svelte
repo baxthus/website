@@ -5,6 +5,7 @@
 	import { getSinglePost } from '$lib/blog';
 	import Back from '$lib/components/Back.svelte';
 	import '$lib/styles/blog.css';
+	import { blur } from 'svelte/transition';
 
 	const postFile = $page.params.slug;
 
@@ -31,18 +32,22 @@
 
 <div class="m-2 font-inter">
 	<Back class="mb-3" href="." />
-	{#if postStatus === 'success'}
-		{#if post.preview}
-			<img src={post.preview} alt="post preview" class="max-w-xs mb-1" />
-		{/if}
-		<h1 class="text-2xl font-bold">{post.title}</h1>
-		<p class="text-lg">{post.date}</p>
-		<br /><br />
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="content">{@html post.content}</div>
-	{:else if postStatus === 'loading'}
-		<div class="text-2xl font-bold">Loading...</div>
-	{:else if postStatus === 'error'}
-		<div class="text-2xl font-bold">Error loading post</div>
-	{/if}
+	{#key postStatus}
+		<div in:blur={{ delay: 300, duration: 300 }} out:blur={{ duration: 300 }}>
+			{#if postStatus === 'success'}
+				{#if post.preview}
+					<img src={post.preview} alt="post preview" class="max-w-xs mb-1" />
+				{/if}
+				<h1 class="text-2xl font-bold">{post.title}</h1>
+				<p class="text-lg">{post.date}</p>
+				<br /><br />
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				<div class="content">{@html post.content}</div>
+			{:else if postStatus === 'loading'}
+				<div class="text-2xl font-bold">Loading...</div>
+			{:else if postStatus === 'error'}
+				<div class="text-2xl font-bold">Error loading post</div>
+			{/if}
+		</div>
+	{/key}
 </div>

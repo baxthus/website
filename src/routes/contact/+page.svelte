@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Contact, User } from '$lib/interfaces/Contact';
 	import Back from '$lib/components/Back.svelte';
+	import { blur } from 'svelte/transition';
 
 	const user = {} as User;
 
@@ -68,19 +69,28 @@
 					/>
 				</div>
 				<div class="form-group">
-					<!-- prettier-ignore -->
-					<button type="submit" class="btn btn-primary">Submit</button>
+					{#if !submitStatus || submitStatus === 'failed'}
+						<button type="submit" class="btn btn-primary">Submit</button>
+					{/if}
+					{#if submitStatus === 'submitting'}
+						<button type="submit" class="btn btn-default" disabled>Submitting...</button>
+					{/if}
+					{#if submitStatus === 'success'}
+						<button type="submit" class="btn btn-default" disabled>Submitted</button>
+					{/if}
 				</div>
 			</fieldset>
 		</form>
 
-		{#if submitStatus === 'submitting'}
-			<div class="alert alert-info">Submitting...</div>
-		{:else if submitStatus === 'success'}
-			<div class="alert alert-success">Submission success</div>
-		{:else if submitStatus === 'failed'}
-			<div class="alert alert-danger">Submission failed</div>
-		{/if}
+		{#key submitStatus}
+			<div transition:blur={{ duration: 300 }}>
+				{#if submitStatus === 'success'}
+					<div class="alert alert-success">Submission success</div>
+				{:else if submitStatus === 'failed'}
+					<div class="alert alert-danger">Submission failed</div>
+				{/if}
+			</div>
+		{/key}
 	</div>
 	<Back class="mx-1" />
 </div>

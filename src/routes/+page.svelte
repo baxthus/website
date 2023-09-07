@@ -42,10 +42,7 @@
 >
 	<div class="flex flex-col gap-7">
 		<div class="min-h-0" id="names">
-			<span class="text-ctp-mauve">
-				<span id="name1">baxthus</span>
-				<span id="name2" class="font-jpFont font-semibold">バクサス</span>
-			</span>
+			<span class="text-ctp-mauve">baxthus</span>
 			<Workspace workspace={codeData?.workspace} />
 			<Branch name={codeData?.branch} />
 			<Language lang={codeData?.lang} />
@@ -57,7 +54,7 @@
 				<li>i'm learning C#</li>
 				<li>i'm not fully fluent in english</li>
 				<li>
-					Here's an example of <Link href="https://dub.sh/CoolMusic">what I like to listen to</Link>
+					Here's some <Link href="/music" newTab={false}>cool music</Link>
 				</li>
 			</ul>
 		</div>
@@ -99,19 +96,3 @@
 		<Commit />
 	</div>
 </section>
-
-<style>
-	div#names span#name1 {
-		display: inline;
-	}
-	div#names:hover span#name1 {
-		display: none;
-	}
-
-	div#names span#name2 {
-		display: none;
-	}
-	div#names:hover span#name2 {
-		display: inline;
-	}
-</style>

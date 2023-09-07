@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Link from '$lib/components/Link.svelte';
+	import { blur } from 'svelte/transition';
 
 	interface Commit {
 		object: {
@@ -18,10 +19,8 @@
 	});
 </script>
 
-{#if !commit}
-	<div>loading...</div>
-{:else}
-	<div>
+{#if commit}
+	<div transition:blur={{ duration: 300 }}>
 		<Link href="https://github.com/baxthus/website/commit/{commit}">{commit}</Link>
 	</div>
 {/if}

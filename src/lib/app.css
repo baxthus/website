@@ -7,9 +7,12 @@ a {
 }
 
 html {
-	@apply text-ctp-text bg-ctp-crust font-jetBrains;
 	scrollbar-color: hsla(0, 0%, 100%, 0.289) transparent;
 	scrollbar-width: thin;
+}
+
+body {
+	@apply text-ctp-text bg-ctp-crust font-jetBrains;
 }
 
 ::-webkit-scrollbar {

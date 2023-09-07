@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Data } from '$lib/richPresence';
 	import Link from '$lib/components/Link.svelte';
+	import { blur } from 'svelte/transition';
 
 	export let data: Data;
 
@@ -8,17 +9,25 @@
 </script>
 
 {#if data?.spotify}
-	<div class="flex flex-col items-start sm:items-end">
-		<h1 class="font-bold">listening to</h1>
-		<Link href={getLink(data.spotify.track_id)} class="text-ctp-pink">{data.spotify.song}</Link>
-		<span class="text-ctp-sky">{data.spotify.artist.replaceAll(';', ',')}</span>
-		<span class="text-ctp-teal">{data.spotify.album}</span>
-		<Link href={getLink(data.spotify.track_id)}>
-			<img
-				src={data.spotify.album_art_url?.replace('spotify:', 'https://i.scdn.co/image/')}
-				alt="Album cover"
-				class="w-36 mt-1"
-			/>
-		</Link>
+	<div transition:blur={{ duration: 300 }}>
+		{#key data.spotify.track_id}
+			<div
+				class="flex flex-col items-start sm:items-end"
+				in:blur={{ delay: 300, duration: 300 }}
+				out:blur={{ duration: 300 }}
+			>
+				<h1 class="font-bold">listening to</h1>
+				<Link href={getLink(data.spotify.track_id)} class="text-ctp-pink">{data.spotify.song}</Link>
+				<span class="text-ctp-sky">{data.spotify.artist.replaceAll(';', ',')}</span>
+				<span class="text-ctp-teal">{data.spotify.album}</span>
+				<Link href={getLink(data.spotify.track_id)}>
+					<img
+						src={data.spotify.album_art_url?.replace('spotify:', 'https://i.scdn.co/image/')}
+						alt="Album cover"
+						class="w-36 mt-1"
+					/>
+				</Link>
+			</div>
+		{/key}
 	</div>
 {/if}
