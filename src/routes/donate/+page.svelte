@@ -11,11 +11,19 @@
 </script>
 
 <section
-	class="p-8 sm:p-12 lg:p-24 lg:py-16 z-10 flex flex-col sm:flex-row gap-y-10 justify-between"
+	class="p-8 sm:p-12 lg:p-24 lg:py-16 lg:pt-12 z-10 flex flex-col sm:flex-row gap-y-10 justify-between"
 >
 	<div class="flex flex-col gap-7">
-		<div class="min-h-0">
-			<span class="text-ctp-mauve">make a donation with cryptocurrencies</span>
+		<Back />
+		<div>
+			<p class="mb-1">Sponsor me on GitHub</p>
+			<iframe
+				src="https://github.com/sponsors/baxthus/button"
+				title="Sponsor baxthus"
+				height="32"
+				width="114"
+				style="border: 0; border-radius: 6px;"
+			></iframe>
 		</div>
 		<div>
 			{#each wallets as { name, address }}
@@ -33,9 +41,6 @@
 				</p>
 				<br />
 			{/each}
-		</div>
-		<div>
-			<Back />
 		</div>
 	</div>
 </section>
