@@ -18,4 +18,6 @@ jobs:
       - name: Run lint
         run: pnpm run lint
       - name: Run svelte-check
+        env:
+          CONTACT_WEBHOOK: ${{ secrets.CONTACT_WEBHOOK }}
         run: pnpm run check
