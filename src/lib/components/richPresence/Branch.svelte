@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let name = '';
+    export let name = '';
 </script>
 
 {#if name}
-	<span class="text-ctp-text inline-block">
-		on <span class="text-ctp-sky">  {name}</span>
-	</span>
+    <span class="inline-block text-ctp-text">
+        on <span class="text-ctp-sky">  {name}</span>
+    </span>
 {/if}

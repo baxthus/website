@@ -1,14 +1,14 @@
 [
-	{
-		"name": "Monero (Preferred)",
-		"address": "48xNghmR3WCgKDowVe9JDWcjQuKcY2ArUBg9aNCcjQFM2wN9x2zfoLtJnnHs2PNAUFKnYuLRiHczwasjmkvqP8Q2CW1nUBj"
-	},
-	{
-		"name": "Bitcoin",
-		"address": "bc1qw43l9pdk60fkygj743ll00m2xvg462rasch9kx"
-	},
-	{
-		"name": "Ethereum",
-		"address": "0x71a2f7933f1d707937c9b46459fb4cc15893668a"
-	}
+    {
+        "name": "Monero (Preferred)",
+        "address": "48xNghmR3WCgKDowVe9JDWcjQuKcY2ArUBg9aNCcjQFM2wN9x2zfoLtJnnHs2PNAUFKnYuLRiHczwasjmkvqP8Q2CW1nUBj"
+    },
+    {
+        "name": "Bitcoin",
+        "address": "bc1qw43l9pdk60fkygj743ll00m2xvg462rasch9kx"
+    },
+    {
+        "name": "Ethereum",
+        "address": "0x71a2f7933f1d707937c9b46459fb4cc15893668a"
+    }
 ]

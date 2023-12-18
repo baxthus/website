@@ -1,28 +1,38 @@
-import type { IMusic } from './interfaces/Music';
+import type Music from '$lib/interfaces/Music';
 
 interface MusicResponse {
-	success: boolean;
-	musics?: Array<IMusic>;
+    success: boolean;
+    musics?: Array<Music>;
 }
 
 export async function getMusics(): Promise<MusicResponse> {
-	const res = await fetch('https://cdn.abysmal.eu.org/musics.json');
-	if (!res.ok) return { success: false };
+    const response = await fetch('https://cdn.abysmal.eu.org/musics.json');
+    if (!response.ok) return { success: false };
 
-	const rawMusics = (await res.json()) as Array<IMusic>;
+    const rawResponse = (await response.json()) as Music[];
 
-	const musics = rawMusics.map(async (music) => {
-		if (music.type === 'album') music.title = music.album;
-		if (music.type === 'artist') music.title = music.artist;
+    const promisedMusics = rawResponse.map(async (music) => {
+        switch (music.type) {
+            case 'album':
+                music.title = music.album;
+                break;
+            case 'artist':
+                music.title = music.artist;
+                break;
+        }
 
-		// if (!music.artwork)
-		//     music.artwork = '/others/album-placeholder.png';
+        if (!music.artwork) music.artwork = '/others/album-placeholder.png';
 
-		return music;
-	});
+        return music;
+    });
 
-	return {
-		success: true,
-		musics: await Promise.all(musics) // I hate the way javascript promises works
-	};
+    const rawMusics = await Promise.all(promisedMusics);
+
+    // Randomize the array using the Schwartzian transform
+    const musics = rawMusics
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+
+    return { success: true, musics };
 }

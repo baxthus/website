@@ -1,54 +1,52 @@
 /* Tailwind is forcing me to do this */
 
-.content :global(a) {
-	@apply text-ctp-lavender underline hover:text-ctp-blue transition-colors duration-200;
+.content-section :global(a) {
+    @apply text-ctp-lavender underline transition-colors duration-200 hover:text-ctp-blue;
 }
 
-.content :global(p a) {
-	display: inline;
+.content-section :global(p a) {
+    display: block;
 }
 
-.content :global(h1) {
-	display: block;
-	font-size: 2em;
-	margin: 0.67em 0;
-	font-weight: bold;
+.content-section :global(h1) {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
 }
 
-.content :global(h2) {
-	display: block;
-	font-size: 1.5em;
-	/* margin-bottom: 0.83em; */
-	margin: 0.83em 0 0.3em;
-	font-weight: bold;
+.content-section :global(h2) {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0 0.3em;
 }
 
-.content :global(h3) {
-	display: block;
-	font-size: 1.17em;
-	margin: 1em 0;
-	font-weight: bold;
+.content-section :global(h3) {
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 1em 0;
 }
 
-.content :global(h4) {
-	display: block;
-	font-size: 1em;
-	margin: 1.33em 0;
-	font-weight: bold;
+.content-section :global(h4) {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1.33em 0;
 }
 
-.content :global(p) {
-	display: block;
-	/* margin-top: 1em; */
-	margin-bottom: 1em;
-	margin-left: 0;
-	margin-right: 0;
+.content-section :global(p) {
+    display: block;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.content :global(i) {
-	font-style: italic;
+.content-section :global(i) {
+    font-style: italic;
 }
 
-.content :global(img) {
-	margin-top: 1em;
+.content-section :global(img) {
+    margin-top: 1em;
 }

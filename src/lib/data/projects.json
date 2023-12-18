@@ -1,27 +1,27 @@
 [
-	{
-		"name": "website",
-		"description": "this website",
-		"url": "https://github.com/baxthus/website"
-	},
-	{
-		"name": "adramelech",
-		"description": "my discord bot",
-		"url": "https://github.com/baxthus/Adramelech"
-	},
-	{
-		"name": "abysmal-api",
-		"description": "my api",
-		"url": "https://github.com/baxthus/abysmal-api"
-	},
-	{
-		"name": "digital clock",
-		"description": "a digital clock example in svelte",
-		"url": "https://github.com/baxthus/digital-clock"
-	},
-	{
-		"name": "random scripts",
-		"description": "my random scripts",
-		"url": "https://github.com/baxthus/tests"
-	}
+    {
+        "name": "website",
+        "description": "this website",
+        "url": "https://github.com/baxthus/website"
+    },
+    {
+        "name": "adramelech",
+        "description": "my discord bot",
+        "url": "https://github.com/baxthus/Adramelech"
+    },
+    {
+        "name": "abysmal-api",
+        "description": "my api",
+        "url": "https://github.com/baxthus/abysmal-api"
+    },
+    {
+        "name": "digital clock",
+        "description": "a digital clock example in svelte",
+        "url": "https://github.com/baxthus/digital-clock"
+    },
+    {
+        "name": "random scripts",
+        "description": "my random scripts",
+        "url": "https://github.com/baxthus/tests"
+    }
 ]

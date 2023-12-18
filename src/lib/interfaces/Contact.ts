@@ -1,9 +1,9 @@
 export interface User {
-	name: string;
-	email: string;
-	message: string;
+    name: string;
+    email: string;
+    message: string;
 }
 
-export interface Contact extends User {
-	url: string;
+export default interface Contact extends User {
+    url: string;
 }

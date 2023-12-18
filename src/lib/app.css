@@ -2,30 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
-	@apply text-ctp-lavender underline hover:text-ctp-blue transition-colors duration-200;
+body {
+    @apply bg-ctp-crust font-jetBrains text-ctp-text;
 }
 
 html {
-	scrollbar-color: hsla(0, 0%, 100%, 0.289) transparent;
-	scrollbar-width: thin;
-}
-
-body {
-	@apply text-ctp-text bg-ctp-crust font-jetBrains;
+    scrollbar-color: hsla(0, 0%, 100%, 0.289) transparent;
+    scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
-	width: 2px;
-	height: 8px;
+    width: 2px;
+    height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-	background: transparent;
+    background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-	background: hsla(0, 0%, 100%, 0.289);
-	border-radius: 3px;
+    background: hsla(0, 0%, 100%, 0.289);
+    border-radius: 3px;
 }
-::-webkit-scrollbar-button ::-webkit-scrollbar-corner {
-	display: none;
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+a {
+    @apply text-ctp-lavender underline transition-colors duration-300 hover:text-ctp-blue;
+}
+
+.to-the-side {
+    @apply flex flex-col items-start sm:items-end;
+}
+
+.content-section {
+    @apply z-10 flex flex-col justify-between gap-y-10 p-8 sm:flex-row sm:p-12 lg:p-24 lg:py-16;
+}
+
+.main-content {
+    @apply flex flex-col gap-7;
+}
+
+.side-content {
+    @apply flex flex-col gap-5 sm:gap-7 sm:text-right;
+}
+
+ul {
+    @apply list-inside list-disc;
+}
+
+p {
+    @apply mb-2;
+}
+
+button {
+    @apply rounded border border-ctp-overlay0 bg-ctp-base px-2 py-1 font-bold text-ctp-text transition-colors duration-300 hover:cursor-pointer hover:bg-ctp-overlay0 hover:text-ctp-base;
+}
+
+button[disabled] {
+    @apply cursor-not-allowed opacity-50 transition-colors duration-200 hover:bg-ctp-crust hover:text-ctp-text;
+}
+
+button.btn-bigger {
+    @apply px-4 py-2;
+}
+
+code {
+    @apply break-all rounded border border-ctp-surface1 bg-ctp-surface0 px-1 py-px;
+}
+
+/*form {*/
+/*    @apply bg-ctp-base border border-ctp-surface0 rounded p-8 my-2;*/
+/*}*/
+
+form fieldset {
+    @apply flex flex-col gap-5;
+}
+
+form legend {
+    @apply mb-5 w-full border-b border-b-ctp-surface1 text-2xl;
+}
+
+form input,
+form textarea {
+    @apply w-full rounded border border-ctp-overlay0 bg-ctp-base px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-ctp-lavender focus:transition focus:duration-300;
+}
+
+form textarea {
+    @apply h-48 resize lg:h-28;
+}
+
+.help-block {
+    @apply my-2 block;
+}
+
+.content-element {
+    @apply break-all rounded border border-ctp-surface0 bg-ctp-mantle p-2 transition-colors duration-300 hover:cursor-pointer hover:bg-ctp-base;
 }
