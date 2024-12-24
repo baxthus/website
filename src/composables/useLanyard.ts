@@ -5,7 +5,7 @@ export const WEBSOCKET_URL = 'wss://api.lanyard.rest/socket';
 
 export async function useLanyard(options: LanyardOptions): Promise<LanyardResponse | Array<LanyardResponse> | undefined> {
   if (Reflect.has(options, 'socket')) {
-    handleSocket(options);
+    socketHandlers.push(() => handleSocket(options));
     return;
   }
 
@@ -31,6 +31,15 @@ export async function useLanyard(options: LanyardOptions): Promise<LanyardRespon
 
   return responseArray;
 }
+
+const socketHandlers = Array<() => void>();
+// Hacky way to only allow one handler to exist at a time
+Object.defineProperty(socketHandlers, 'push', {
+  value: (handler: () => void) => {
+    socketHandlers.splice(0, 1, handler);
+    handler();
+  },
+});
 
 function handleSocket(options: LanyardOptions) {
   const { onPresenceUpdate } = options;
@@ -81,11 +90,9 @@ function handleSocket(options: LanyardOptions) {
   // Happens more often on Apple devices, as they are more aggressive with not running background tasks
   // There is no way to prevent this, so we just reconnect the socket
   socket.addEventListener('close', () => {
-    // Taken from https://stackoverflow.com/a/23176223
     console.log('Socket closed, reconnecting in 1 second');
     setTimeout(() => {
-      // Garbage collector goes brrrr
-      handleSocket(options);
+      socketHandlers.push(() => handleSocket(options));
     }, 1000);
   });
 }
