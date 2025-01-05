@@ -45,7 +45,7 @@ function getProgress() {
           {{ data?.spotify?.song }}
         </a>
         <p class="truncate w-full">
-          {{ data?.spotify?.artist }}
+          {{ data?.spotify?.artist.replace(/;/g, ', ') }}
         </p>
       </div>
     </div>

@@ -26,5 +26,8 @@
   "devDependencies": {
     "@primevue/nuxt-module": "^4.2.2",
     "@types/node": "^22.9.0"
-  }
+  },
+  "trustedDependencies": [
+    "@parcel/watcher"
+  ]
 }
