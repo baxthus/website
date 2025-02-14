@@ -34,6 +34,8 @@ export async function useLanyard(options: LanyardOptions): Promise<LanyardRespon
 
 const socketHandlers = Array<() => void>();
 // Hacky way to only allow one handler to exist at a time
+// Doing this because "delete socket" is not allowed in strict mode
+// and calling it recursively is bad for garbage collection
 Object.defineProperty(socketHandlers, 'push', {
   value: (handler: () => void) => {
     socketHandlers.splice(0, 1, handler);
