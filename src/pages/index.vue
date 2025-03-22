@@ -31,7 +31,7 @@ const links = ref<Array<{ title: string; icon: Icon; content?: string; copy?: bo
   { title: 'Donate', icon: IconMoneybag, action: () => donationVisible.value = true },
 ]);
 
-const location = computed(() => data.value?.kv?.location ?? 'Earth');
+const location = computed(() => data.value?.kv?.location ?? 'São Paulo, Brazil');
 const locationUrl = computed(() => new URL(`https://www.google.com/maps/search/?api=1&query=${location.value}`).href);
 
 const donationVisible = ref(false);
