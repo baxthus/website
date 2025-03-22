@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@primevue/nuxt-module',
+    'motion-v/nuxt',
   ],
   ssr: true,
   devtools: { enabled: true },
