@@ -82,5 +82,9 @@ export default defineNuxtConfig({
       },
       ripple: true,
     },
+    components: {
+      // See: https://github.com/primefaces/primevue/issues/7434#issuecomment-2719656276
+      exclude: ['Form', 'FormField', 'Editor', 'Chart'],
+    },
   },
 });
