@@ -148,6 +148,7 @@ const techStackDelay = 0.8;
         :initial="{ opacity: 0, x: -20 }"
         :animate="{ opacity: 1, x: 0 }"
         :transition="{ duration: 0.5, delay: spotifyDelay }"
+        class="max-w-full"
       >
         <Spotify :data />
       </Motion>
