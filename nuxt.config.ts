@@ -45,8 +45,8 @@ export default defineNuxtConfig({
       link: [
         {
           rel: 'icon',
-          type: 'image/jpeg',
-          href: '/favicon.jpg',
+          type: 'image/webp',
+          href: '/favicon.webp',
         },
       ],
     },
