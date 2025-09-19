@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
+import Footer from '@/components/Footer';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
 });
 
@@ -42,8 +42,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} antialiased`}>
-        <Providers>{children}</Providers>
+      <body
+        className={`${jetBrainsMono.className} flex flex-col items-center p-4 antialiased`}
+      >
+        <Providers>
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
