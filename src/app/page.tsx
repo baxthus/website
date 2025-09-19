@@ -6,6 +6,7 @@ import {
   IconBrandLastfm,
   IconBrandSteam,
   IconBrandX,
+  IconCode,
   IconMail,
   IconMapPin,
 } from '@tabler/icons-react';
@@ -70,6 +71,8 @@ export default function Home() {
           }[lanyard?.discord_status ?? 'offline'] as ButtonProps['color']
         }
         alt="Avatar"
+        fallback={<IconCode size={64} />}
+        showFallback={true}
       />
 
       <h1 className="text-4xl font-bold">baxthus</h1>
