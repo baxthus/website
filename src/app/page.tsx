@@ -16,6 +16,7 @@ import { createElement } from 'react';
 import Donation from '@/components/Donation';
 import type { ButtonGroup } from '@/types/button-group';
 import Spotify from '@/components/Spotify';
+import TechStack from '@/components/TechStack';
 
 const discordId = process.env.NEXT_PUBLIC_DISCORD_ID as Types.Snowflake;
 
@@ -114,7 +115,7 @@ export default function Home() {
 
       {lanyard?.listening_to_spotify && <Spotify spotify={lanyard.spotify!} />}
 
-      <p className="p-4">Coming soon...</p>
+      <TechStack />
     </div>
   );
 }
