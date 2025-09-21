@@ -440,15 +440,17 @@ export default function TechStack() {
       <h2 className="text-2xl font-bold">Tech Stack</h2>
       {techStack.map(category => (
         <div key={category.name} className="w-full max-w-5xl">
-          <h3 className="mb-3 text-lg font-semibold">{category.name}</h3>
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+          <h3 className="mb-3 text-center text-lg font-semibold">
+            {category.name}
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
             {category.items.map(item => (
               <Card
                 key={item.name}
                 isPressable
                 shadow="sm"
                 onPress={() => window.open(item.link, '_blank')}
-                className="min-h-24"
+                className="min-h-24 shrink-0 grow-0 basis-1/3 sm:basis-1/4 md:basis-1/6 lg:basis-[12.5%]"
               >
                 <CardBody className="flex items-center justify-center text-4xl">
                   {item.icon}
