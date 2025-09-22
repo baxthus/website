@@ -297,7 +297,7 @@ const techStack: Array<{
     items: [
       {
         name: 'Better Auth',
-        link: 'https://betterauth.dev',
+        link: 'https://www.better-auth.com',
         icon: <BetterAuth />,
       },
       {
