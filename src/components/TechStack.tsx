@@ -455,7 +455,7 @@ export default function TechStack() {
                 <CardBody className="flex items-center justify-center text-4xl">
                   {item.icon}
                 </CardBody>
-                <CardFooter className="pt-0">
+                <CardFooter className="px-1 pt-0">
                   <p className="w-full text-center text-xs leading-tight">
                     {item.name}
                   </p>
