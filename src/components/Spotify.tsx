@@ -30,7 +30,7 @@ export default function Spotify({ spotify }: { spotify: Types.Spotify }) {
   }, [now, spotify.timestamps]);
 
   return (
-    <Card className="w-full">
+    <Card className="w-full max-w-sm">
       <CardHeader className="pb-0">
         <div className="flex w-full flex-row items-center justify-between">
           <p className="text-sm font-medium">Listening to Spotify</p>
