@@ -146,7 +146,7 @@ const techStack: Array<{
         icon: <Nuxt />,
       },
       {
-        name: 'Svelte/SvelteKit',
+        name: 'Svelte',
         link: 'https://svelte.dev',
         icon: <Svelte />,
       },
@@ -326,7 +326,7 @@ const techStack: Array<{
     name: 'Development Environment',
     items: [
       {
-        name: 'Visual Studio Code',
+        name: 'VS Code',
         link: 'https://code.visualstudio.com',
         icon: <VisualStudioCode />,
       },

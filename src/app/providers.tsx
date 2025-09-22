@@ -9,7 +9,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <HeroUIProvider>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" forcedTheme="dark">
         <ToastProvider />
         {children}
       </ThemeProvider>
