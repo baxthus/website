@@ -11,6 +11,25 @@ import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import type { Types } from 'use-lanyard';
 
+function formatTime(milliseconds: number): string {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function calculateProgress(
+  currentTime: number,
+  startTime: number,
+  endTime: number,
+): number {
+  if (endTime <= startTime) return 0;
+  const elapsed = currentTime - startTime;
+  const duration = endTime - startTime;
+  const progressPercent = (elapsed / duration) * 100;
+  return Math.min(Math.max(progressPercent, 0), 100);
+}
+
 export default function Spotify({ spotify }: { spotify: Types.Spotify }) {
   const [now, setNow] = useState(new Date());
 
@@ -19,15 +38,24 @@ export default function Spotify({ spotify }: { spotify: Types.Spotify }) {
     return () => clearInterval(interval);
   }, []);
 
+  const { start: startTime, end: endTime } = spotify.timestamps ?? {};
+  const currentTime = now.getTime();
+
   const progress = useMemo(() => {
-    const start = spotify.timestamps?.start ?? now;
-    const end = spotify.timestamps?.end ?? now;
+    if (!startTime || !endTime) return 0;
+    return calculateProgress(currentTime, startTime, endTime);
+  }, [currentTime, startTime, endTime]);
 
-    if (end <= start) return 0;
+  const progressTooltip = useMemo(() => {
+    if (!startTime || !endTime || endTime <= startTime) {
+      return '0:00 / 0:00';
+    }
 
-    const progress = ((now.getTime() - start) / (end - start)) * 100;
-    return Math.min(Math.max(progress, 0), 100);
-  }, [now, spotify.timestamps]);
+    const elapsed = (progress / 100) * (endTime - startTime);
+    const duration = endTime - startTime;
+
+    return `${formatTime(elapsed)} / ${formatTime(duration)}`;
+  }, [progress, startTime, endTime]);
 
   return (
     <Card className="w-full max-w-sm">
@@ -43,10 +71,11 @@ export default function Spotify({ spotify }: { spotify: Types.Spotify }) {
         <div className="flex w-full flex-row gap-x-4">
           <Tooltip content={spotify.album}>
             <Image
-              src={spotify.album_art_url ?? ''}
-              alt={spotify.album ?? 'Album Art'}
+              src={spotify.album_art_url || ''}
+              alt={spotify.album || 'Album Art'}
               width={96}
               height={96}
+              className="rounded-md"
             />
           </Tooltip>
           <div className="flex w-full min-w-0 flex-col">
@@ -61,16 +90,18 @@ export default function Spotify({ spotify }: { spotify: Types.Spotify }) {
                 {spotify.song}
               </Link>
               <p className="text-default-600 truncate text-sm">
-                {spotify.artist?.replace(';', ', ')}
+                {spotify.artist?.split(';').join(', ')}
               </p>
             </div>
-            <Progress
-              aria-label="Song Progress"
-              value={progress}
-              size="sm"
-              color="success"
-              className="mt-2 mb-0.5"
-            />
+            <Tooltip content={progressTooltip}>
+              <Progress
+                aria-label="Song Progress"
+                value={progress}
+                size="sm"
+                color="success"
+                className="mt-2 mb-0.5"
+              />
+            </Tooltip>
           </div>
         </div>
       </CardBody>
