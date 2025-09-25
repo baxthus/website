@@ -6,7 +6,6 @@ import {
   IconBrandLastfm,
   IconBrandSteam,
   IconBrandX,
-  IconCode,
   IconMail,
   IconMapPin,
 } from '@tabler/icons-react';
@@ -57,11 +56,7 @@ export default function Home() {
     <div className="flex flex-col items-center gap-4 p-4">
       <Avatar
         className="text-large size-32"
-        src={
-          lanyard?.discord_user?.avatar
-            ? `https://cdn.discordapp.com/avatars/${discordId}/${lanyard?.discord_user.avatar}.png?size=256`
-            : undefined
-        }
+        src="/avatar.jpeg"
         isBordered
         color={
           {
@@ -72,8 +67,6 @@ export default function Home() {
           }[lanyard?.discord_status ?? 'offline'] as ButtonProps['color']
         }
         alt="Avatar"
-        fallback={<IconCode size={64} />}
-        showFallback={true}
       />
 
       <h1 className="text-4xl font-bold">baxthus</h1>
