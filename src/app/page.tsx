@@ -1,21 +1,10 @@
 'use client';
-import { Avatar, Button, Tooltip, type ButtonProps } from '@heroui/react';
-import {
-  IconBrandDiscord,
-  IconBrandGithub,
-  IconBrandLastfm,
-  IconBrandSteam,
-  IconBrandX,
-  IconMail,
-  IconMapPin,
-} from '@tabler/icons-react';
+import { Avatar, Button, type ButtonProps } from '@heroui/react';
+import { IconMapPin } from '@tabler/icons-react';
 import { useLanyardWS, type Types } from 'use-lanyard';
-import copyToClipboard from '@/utils/copyToClipboard';
-import { createElement } from 'react';
-import Donation from '@/components/Donation';
-import type { ButtonGroup } from '@/types/button-group';
 import Spotify from '@/components/Spotify';
 import TechStack from '@/components/TechStack';
+import Links from '@/components/Links';
 
 const discordId = process.env.NEXT_PUBLIC_DISCORD_ID as Types.Snowflake;
 
@@ -23,31 +12,6 @@ const description = `
 BREATHE SMOKE WHERE THE AIR IS FRESH
 Full-Stack Developer (in my dreams)
 `.trim();
-
-const links: ButtonGroup = [
-  { title: 'Email', content: 'baxt@baxt.fun', icon: IconMail, copy: true },
-  { title: 'X', content: 'https://x.com/baxthus', icon: IconBrandX },
-  {
-    title: 'GitHub',
-    content: 'https://github.com/baxthus',
-    icon: IconBrandGithub,
-  },
-  {
-    title: 'Steam',
-    content: 'https://steamcommunity.com/id/baxthus',
-    icon: IconBrandSteam,
-  },
-  {
-    title: 'Discord',
-    content: `https://discord.com/users/${discordId}`,
-    icon: IconBrandDiscord,
-  },
-  {
-    title: 'Last.fm',
-    content: 'https://www.last.fm/user/baxthus',
-    icon: IconBrandLastfm,
-  },
-];
 
 export default function Home() {
   const lanyard = useLanyardWS(discordId);
@@ -85,26 +49,7 @@ export default function Home() {
 
       <p className="text-center whitespace-pre-wrap">{description}</p>
 
-      <div className="flex flex-wrap justify-center">
-        {links.map(({ title, content, icon, action, copy }) => (
-          <Tooltip key={title} content={title}>
-            <Button
-              as={copy ? 'button' : 'a'}
-              href={content}
-              target="_blank"
-              isIconOnly
-              variant="light"
-              onPress={() => {
-                if (action) action();
-                if (copy && content) copyToClipboard(content);
-              }}
-            >
-              {createElement(icon, { size: 32 })}
-            </Button>
-          </Tooltip>
-        ))}
-        <Donation />
-      </div>
+      <Links discordId={discordId} />
 
       {lanyard?.listening_to_spotify && <Spotify spotify={lanyard.spotify!} />}
 

@@ -1,4 +1,4 @@
-import type { ButtonGroup } from '@/types/button-group';
+import { ButtonGroup } from '@/types/button-group';
 import copyToClipboard from '@/utils/copyToClipboard';
 import {
   Button,
@@ -11,11 +11,66 @@ import {
   useDisclosure,
 } from '@heroui/react';
 import {
+  IconMail,
+  IconBrandX,
   IconBrandGithub,
+  IconBrandSteam,
+  IconBrandDiscord,
+  IconBrandLastfm,
   IconCoinMonero,
   IconMoneybag,
 } from '@tabler/icons-react';
 import { createElement } from 'react';
+
+export default function Links({ discordId }: { discordId: string }) {
+  const links: ButtonGroup = [
+    { title: 'Email', content: 'baxt@baxt.fun', icon: IconMail, copy: true },
+    { title: 'X', content: 'https://x.com/baxthus', icon: IconBrandX },
+    {
+      title: 'GitHub',
+      content: 'https://github.com/baxthus',
+      icon: IconBrandGithub,
+    },
+    {
+      title: 'Steam',
+      content: 'https://steamcommunity.com/id/baxthus',
+      icon: IconBrandSteam,
+    },
+    {
+      title: 'Discord',
+      content: `https://discord.com/users/${discordId}`,
+      icon: IconBrandDiscord,
+    },
+    {
+      title: 'Last.fm',
+      content: 'https://www.last.fm/user/baxthus',
+      icon: IconBrandLastfm,
+    },
+  ];
+
+  return (
+    <div className="flex flex-wrap justify-center">
+      {links.map(({ title, content, icon, action, copy }) => (
+        <Tooltip key={title} content={title}>
+          <Button
+            as={copy ? 'button' : 'a'}
+            href={content}
+            target="_blank"
+            isIconOnly
+            variant="light"
+            onPress={() => {
+              if (action) action();
+              if (copy && content) copyToClipboard(content);
+            }}
+          >
+            {createElement(icon, { size: 32 })}
+          </Button>
+        </Tooltip>
+      ))}
+      <Donation />
+    </div>
+  );
+}
 
 const paymentMethods: ButtonGroup = [
   {
@@ -32,7 +87,7 @@ const paymentMethods: ButtonGroup = [
   },
 ];
 
-export default function Donation() {
+export function Donation() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -59,7 +114,7 @@ export default function Donation() {
                     key={title}
                     as={copy ? 'button' : 'a'}
                     href={content}
-                    target={'_blank'}
+                    target="_blank"
                     color="secondary"
                     variant="shadow"
                     className="w-full"
