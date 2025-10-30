@@ -446,10 +446,12 @@ export default function TechStack() {
           <div className="flex flex-wrap justify-center gap-3">
             {category.items.map(item => (
               <Card
+                as="a"
                 key={item.name}
                 isPressable
                 shadow="sm"
-                onPress={() => window.open(item.link, '_blank')}
+                href={item.link}
+                target="_blank"
                 className="min-h-24 shrink-0 grow-0 basis-1/3 sm:basis-1/4 md:basis-1/6 lg:basis-[12.5%]"
               >
                 <CardBody className="flex items-center justify-center text-4xl">
