@@ -24,7 +24,7 @@ import { createElement } from 'react';
 
 export default function Links({ discordId }: { discordId: string }) {
   const links: ButtonGroup = [
-    { title: 'Email', content: 'baxt@baxt.fun', icon: IconMail, copy: true },
+    { title: 'Email', content: 'baxt@baxt.dev', icon: IconMail, copy: true },
     { title: 'X', content: 'https://x.com/baxthus', icon: IconBrandX },
     {
       title: 'GitHub',
