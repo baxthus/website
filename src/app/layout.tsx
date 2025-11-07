@@ -10,15 +10,12 @@ const jetBrainsMono = JetBrains_Mono({
 
 const title = 'baxthus';
 const description = 'BREATHE SMOKE WHERE THE AIR IS FRESH';
-const url = 'https://baxt.fun';
-const favicon = `${url}/favicon.webp`;
+const url = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+const favicon = `${url}/favicon.ico`;
 
 export const metadata: Metadata = {
   title,
   description,
-  icons: {
-    icon: favicon,
-  },
   openGraph: {
     type: 'website',
     url,
