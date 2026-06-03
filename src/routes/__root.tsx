@@ -1,7 +1,8 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
+import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
 
 import { Providers } from '@/components/providers';
 import { env } from '@/env';
+import type { RouterContext } from '@/router';
 
 import styles from '../styles/main.css?url';
 
@@ -10,7 +11,7 @@ const description = 'BREATHE SMOKE WHERE THE AIR IS FRESH';
 const url = env.VITE_PUBLIC_URL;
 const favicon = `${url}/favicon.ico`;
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<RouterContext>()({
   head: () => ({
     meta: [
       { charSet: 'utf8' },
@@ -42,7 +43,7 @@ function RootComponent() {
       <head>
         <HeadContent />
       </head>
-      <body className="antialised">
+      <body className="antialised bg-background text-foreground">
         <Providers>
           <Outlet />
         </Providers>
