@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "eslint", "react"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn",
+    "style": "warn",
+    "restriction": "warn"
+  },
+  "env": {
+    "builtin": true
+  },
+  "rules": {
+    "eslint/sort-keys": "off",
+    "eslint/sort-imports": "off",
+    "eslint/id-length": "off",
+    "eslint/func-style": "off",
+    "eslint/no-use-before-define": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": ["tsx"] }],
+    "react/only-export-components": "off",
+    "typescript/explicit-function-return-type": "off",
+    "typescript/explicit-module-boundary-types": "off"
+  },
+  "ignorePatterns": ["src/routeTree.gen.ts"]
+}
