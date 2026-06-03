@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ES2022",
-    "lib": ["esnext"],
+    "lib": ["esnext", "DOM"],
     "types": ["node", "vite/client"],
 
     "sourceMap": true,

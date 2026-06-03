@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
 
+import { Providers } from '@/components/providers';
 import { env } from '@/env';
 
 import styles from '../styles/main.css?url';
@@ -42,7 +43,9 @@ function RootComponent() {
         <HeadContent />
       </head>
       <body className="antialised">
-        <Outlet />
+        <Providers>
+          <Outlet />
+        </Providers>
         <Scripts />
       </body>
     </html>
