@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Avatar } from '@/components/app/avatar';
 import { LinksBar } from '@/components/app/links-bar';
 import SpotifyCard from '@/components/app/spotify-card';
+import TechStack from '@/components/app/tech-stack';
 import { env } from '@/env';
 import { useLanyardWS } from '@/lib/lanyard/hooks';
 import type { LanyardData } from '@/lib/lanyard/types';
@@ -49,6 +50,8 @@ function HomePage() {
       <LinksBar />
 
       {lanyard?.spotify && <SpotifyCard spotify={lanyard?.spotify} />}
+
+      <TechStack />
     </div>
   );
 }

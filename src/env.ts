@@ -6,6 +6,7 @@ export const env = createEnv({
   client: {
     VITE_PUBLIC_URL: z.url().default('http://localhost:3000'),
     VITE_DISCORD_ID: z.string(),
+    VITE_REPO_URL: z.url(),
   },
 
   runtimeEnv: Object.assign(process.env, import.meta.env),

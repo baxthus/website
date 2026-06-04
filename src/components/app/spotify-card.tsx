@@ -58,6 +58,7 @@ export default function SpotifyCard({ spotify }: { spotify: Spotify }) {
             <div className="flex h-full flex-col justify-center">
               <Link
                 href={`https://open.spotify.com/track/${spotify.track_id}`}
+                target="_blank"
                 className="block max-w-full truncate text-base font-bold"
               >
                 {spotify.song}
