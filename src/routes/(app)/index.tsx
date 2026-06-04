@@ -4,6 +4,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
 import { Avatar } from '@/components/app/avatar';
+import { LinksBar } from '@/components/app/links-bar';
 import SpotifyCard from '@/components/app/spotify-card';
 import { env } from '@/env';
 import { useLanyardWS } from '@/lib/lanyard/hooks';
@@ -44,6 +45,8 @@ function HomePage() {
       </a>
 
       <p className="text-center whitespace-pre-wrap">{description}</p>
+
+      <LinksBar />
 
       {lanyard?.spotify && <SpotifyCard spotify={lanyard?.spotify} />}
     </div>
