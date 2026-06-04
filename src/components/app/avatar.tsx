@@ -18,8 +18,9 @@ export function Avatar({ status }: { status: LanyardData['discord_status'] }) {
       </RawAvatar>
       <Badge
         color={statusColor[status]}
+        size="sm"
         placement="bottom-right"
-        className="absolute right-2 bottom-2"
+        className="absolute right-3 bottom-3"
       />
     </Badge.Anchor>
   );
