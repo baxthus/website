@@ -13,7 +13,7 @@ export function Avatar({ status }: { status: LanyardData['discord_status'] }) {
   return (
     <Badge.Anchor className="relative">
       <RawAvatar className="size-32 rounded-full">
-        <RawAvatar.Image src="/avatar.jpeg" alt="Avatar" />
+        <RawAvatar.Image src="/avatar.jpg" alt="Avatar" />
         <RawAvatar.Fallback>B</RawAvatar.Fallback>
       </RawAvatar>
       <Badge
