@@ -20,7 +20,7 @@ type ButtonGroup = {
 }[];
 
 const links: ButtonGroup = [
-  { title: 'Email', content: 'baxt@baxt.dev', icon: IconMail, copy: true },
+  { title: 'Email', content: 'root@baxt.dev', icon: IconMail, copy: true },
   { title: 'GitHub', content: 'https://github.com/baxthus', icon: IconBrandGithub },
   {
     title: 'Discord',
