@@ -50,6 +50,7 @@ export function Badges() {
               src={`${IMAGE_PREFIX}/${badge.image}`}
               alt={badge.name}
               title={badge.name}
+              loading="lazy"
               className="h-8 w-22"
             />
           </a>
