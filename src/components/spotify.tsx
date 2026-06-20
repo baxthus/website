@@ -54,7 +54,7 @@ export function Spotify({ spotify }: { spotify: LanyardData['spotify'] }) {
             href={`https://open.spotify.com/track/${spotify.track_id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="truncate"
+            className="max-w-full truncate"
           >
             {spotify.song}
           </a>

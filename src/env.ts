@@ -7,6 +7,9 @@ export const env = createEnv({
     VITE_PUBLIC_URL: z.url().default('http://localhost:3000'),
     VITE_DISCORD_ID: z.string(),
     VITE_REPO_URL: z.url(),
+    VITE_LICENSE_URL: z.url(),
+    VITE_VERCEL_GIT_COMMIT_REF: z.string().default('unknown'),
+    VITE_VERCEL_GIT_COMMIT_SHA: z.string().default('unknown'),
   },
 
   runtimeEnv: Object.assign(process.env, import.meta.env),

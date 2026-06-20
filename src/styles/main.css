@@ -5,6 +5,10 @@
   --font-mono: 'Geist Mono Variable', monospace;
 }
 
+@theme {
+  --animate-marquee: marquee 20s linear infinite;
+}
+
 body {
   font-family: var(--font-mono);
   font-variant-ligatures: none;
@@ -48,4 +52,13 @@ li {
 
 hr {
   color: gray;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
