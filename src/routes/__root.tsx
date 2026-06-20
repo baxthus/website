@@ -43,7 +43,7 @@ function RootComponent() {
       <head>
         <HeadContent />
       </head>
-      <body className="antialised bg-background text-foreground">
+      <body className="antialised">
         <Providers>
           <Outlet />
         </Providers>

@@ -1,13 +1,12 @@
-import { Link } from '@heroui/react';
-
 import { env } from '@/env';
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer>
-      <Link href={env.VITE_REPO_URL} target="_blank">
+    <footer className="space-y-3.5">
+      <hr />
+      <a href={env.VITE_REPO_URL} target="_blank" rel="noopener noreferrer">
         source code
-      </Link>
+      </a>
     </footer>
   );
 }

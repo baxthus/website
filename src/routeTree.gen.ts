@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as appRouteRouteImport } from './routes/(app)/route'
 import { Route as appIndexRouteImport } from './routes/(app)/index'
+import { Route as appBlogRouteImport } from './routes/(app)/blog'
 
 const appRouteRoute = appRouteRouteImport.update({
   id: '/(app)',
@@ -21,24 +22,32 @@ const appIndexRoute = appIndexRouteImport.update({
   path: '/',
   getParentRoute: () => appRouteRoute,
 } as any)
+const appBlogRoute = appBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => appRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/blog': typeof appBlogRoute
   '/': typeof appIndexRoute
 }
 export interface FileRoutesByTo {
+  '/blog': typeof appBlogRoute
   '/': typeof appIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(app)': typeof appRouteRouteWithChildren
+  '/(app)/blog': typeof appBlogRoute
   '/(app)/': typeof appIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/blog' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/(app)' | '/(app)/'
+  to: '/blog' | '/'
+  id: '__root__' | '/(app)' | '/(app)/blog' | '/(app)/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -61,14 +70,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof appIndexRouteImport
       parentRoute: typeof appRouteRoute
     }
+    '/(app)/blog': {
+      id: '/(app)/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof appBlogRouteImport
+      parentRoute: typeof appRouteRoute
+    }
   }
 }
 
 interface appRouteRouteChildren {
+  appBlogRoute: typeof appBlogRoute
   appIndexRoute: typeof appIndexRoute
 }
 
 const appRouteRouteChildren: appRouteRouteChildren = {
+  appBlogRoute: appBlogRoute,
   appIndexRoute: appIndexRoute,
 }
 
