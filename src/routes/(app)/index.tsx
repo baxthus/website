@@ -36,7 +36,7 @@ const techStack = [
 
 const links = [
   { label: 'Email', name: 'root at baxt.dev', href: 'mailto:root@baxt.dev' },
-  { label: 'GitHub', name: '@baxthus', href: 'https://github.com/baxthus' },
+  { label: 'GitHub', name: 'baxthus', href: 'https://github.com/baxthus' },
   { label: 'Discord', name: 'baxthus', href: `https://discord.com/users/${env.VITE_DISCORD_ID}` },
   { label: 'X', name: '@baxthus', href: 'https://x.com/baxthus' },
   { label: 'Steam', name: 'baxthus', href: 'https://steamcommunity.com/id/baxthus' },
