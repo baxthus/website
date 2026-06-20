@@ -1,5 +1,6 @@
 import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
 
+import { Banner } from '@/components/banner';
 import { Providers } from '@/components/providers';
 import { env } from '@/env';
 import type { RouterContext } from '@/router';
@@ -47,6 +48,7 @@ function RootComponent() {
         <Providers>
           <Outlet />
         </Providers>
+        <Banner />
         <Scripts />
       </body>
     </html>
