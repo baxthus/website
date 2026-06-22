@@ -47,7 +47,7 @@ a:hover {
 }
 
 li {
-  @apply list-inside list-[square];
+  @apply mx-0.5 list-inside list-[square];
 }
 
 hr {
