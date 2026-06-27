@@ -27,6 +27,11 @@ const badges = [
   { name: 'Piracy now!', image: 'piracy_now.gif' },
   { name: 'Fire skull', image: 'fireskull.jpeg' },
   { name: 'I LIKE COMPUTER', image: 'i_like_computer.png' },
+  { name: 'TypeScript', image: 'typescript.gif', url: 'https://www.typescriptlang.org' },
+  { name: 'Powered by Bun', image: 'powered-by-bun.gif', url: 'https://bun.sh' },
+  { name: 'Shipped it on Vercel', image: 'shipped-it.gif', url: 'https://vercel.com' },
+  { name: 'Penguin Computing', image: 'penguin.gif' },
+  { name: 'Half-Life', image: 'half-life.gif', url: 'https://www.half-life.com' },
 ];
 
 // Duplicated so the second half lines up exactly with the first,
@@ -37,15 +42,8 @@ export function Badges() {
   return (
     <div className="w-full overflow-hidden">
       <div className="flex w-max animate-marquee whitespace-nowrap">
-        {marqueeBadges.map((badge, i) => (
-          <a
-            // oxlint-disable-next-line react/no-array-index-key
-            key={`${badge.name}-${i}`}
-            href={badge.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-1 inline-block shrink-0"
-          >
+        {marqueeBadges.map((badge, i) => {
+          const img = (
             <img
               src={`${IMAGE_PREFIX}/${badge.image}`}
               alt={badge.name}
@@ -53,8 +51,33 @@ export function Badges() {
               loading="lazy"
               className="h-8 w-22"
             />
-          </a>
-        ))}
+          );
+
+          if (badge.url) {
+            return (
+              <a
+                // oxlint-disable-next-line react/no-array-index-key
+                key={`${badge.name}-${i}`}
+                href={badge.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1 inline-block shrink-0"
+              >
+                {img}
+              </a>
+            );
+          }
+
+          return (
+            <span
+              // oxlint-disable-next-line react/no-array-index-key
+              key={`${badge.name}-${i}`}
+              className="mx-1 inline-block shrink-0"
+            >
+              {img}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
