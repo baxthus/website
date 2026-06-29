@@ -1,10 +1,5 @@
 <script>
-  import {
-    LICENSE_URL,
-    REPO_URL,
-    VITE_VERCEL_GIT_COMMIT_REF,
-    VITE_VERCEL_GIT_COMMIT_SHA,
-  } from '$app/env/public';
+  import { CF_PAGES_COMMIT_SHA, LICENSE_URL, REPO_URL } from '$app/env/public';
 
   import Badges from './badges.svelte';
 </script>
@@ -19,7 +14,7 @@
       <a href={LICENSE_URL} target="_blank" rel="noopener noreferrer">GNU AGPLv3 license</a>
     </p>
     <p>
-      Ref: {VITE_VERCEL_GIT_COMMIT_REF} | Commit: {VITE_VERCEL_GIT_COMMIT_SHA}
+      Commit: {CF_PAGES_COMMIT_SHA}
     </p>
   </div>
 </footer>

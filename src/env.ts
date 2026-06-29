@@ -18,11 +18,7 @@ export const variables = defineEnvVars({
     public: true,
     schema: z.url(),
   },
-  VITE_VERCEL_GIT_COMMIT_REF: {
-    public: true,
-    schema: z.string().default('unknown'),
-  },
-  VITE_VERCEL_GIT_COMMIT_SHA: {
+  CF_PAGES_COMMIT_SHA: {
     public: true,
     schema: z.string().default('unknown'),
   },
