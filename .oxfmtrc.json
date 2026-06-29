@@ -1,9 +1,10 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "svelte": true,
   "singleQuote": true,
   "sortImports": true,
   "sortTailwindcss": {
-    "stylesheet": "src/styles/main.css"
+    "stylesheet": "src/routes/layout.css"
   },
-  "ignorePatterns": ["src/routeTree.gen.ts"]
+  "ignorePatterns": []
 }

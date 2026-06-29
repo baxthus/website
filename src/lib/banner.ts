@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 const banner = `\n
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿
 ⡇⣶⠆⣴⣶⡶⢠⡖⡴⣴⠂⢄⣒⡂⡶⣐⣒⣒⣒⡂⢲⡆⢲⣦⠐⣶⣶⣶⣶⣶⠀⡔⣶⣶⣶⡶⢠⣶⡀⡆⣶⡶⠶⡀⢢⢶⡖⡀⠄⡲⣶⣶⣖⡆⠠⢰⣶⣆⢶⡄⢲⢸
@@ -25,11 +23,6 @@ const bannerStyle =
 const phraseStyle =
   'color: hotpink; font-family: ui-sans-serif, system-ui, sans-serif; font-weight: bold; font-size: 12px;';
 
-export function Banner() {
-  useEffect(() => {
-    // oxlint-disable-next-line no-console
-    console.log(`%c${banner}%c${phrase}`, bannerStyle, phraseStyle);
-  });
-
-  return null;
-}
+export const logBanner = (): void =>
+  // oxlint-disable-next-line no-console
+  console.log(`%c${banner}%c${phrase}`, bannerStyle, phraseStyle);
