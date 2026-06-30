@@ -43,6 +43,16 @@
 <div class="w-full overflow-hidden">
   <div class="flex w-max animate-marquee whitespace-nowrap">
     {#each marqueeBadges as badge}
+      {#snippet image()}
+        <img
+          src={`${IMAGE_PREFIX}/${badge.image}`}
+          alt={badge.name}
+          title={badge.name}
+          loading="lazy"
+          class="h-8 w-22"
+        />
+      {/snippet}
+
       {#if badge.url}
         <a
           href={badge.url}
@@ -50,23 +60,11 @@
           rel="noopener noreferrer"
           class="mx-1 inline-block shrink-0"
         >
-          <img
-            src={`${IMAGE_PREFIX}/${badge.image}`}
-            alt={badge.name}
-            title={badge.name}
-            loading="lazy"
-            class="h-8 w-22"
-          />
+          {@render image()}
         </a>
       {:else}
         <span class="mx-1 inline-block shrink-0">
-          <img
-            src={`${IMAGE_PREFIX}/${badge.image}`}
-            alt={badge.name}
-            title={badge.name}
-            loading="lazy"
-            class="h-8 w-22"
-          />
+          {@render image()}
         </span>
       {/if}
     {/each}
