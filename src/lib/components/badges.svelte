@@ -1,7 +1,13 @@
 <script lang="ts">
   const IMAGE_PREFIX = '88x31';
 
-  const badges = [
+  interface Badge {
+    name: string;
+    image: string;
+    url?: string;
+  }
+
+  const badges: Badge[] = [
     { name: 'Made with Neovim', url: 'https://neovim.io', image: 'neovim.png' },
     { name: 'Made on Linux', url: 'https://www.linux.org', image: 'madeon_linux.gif' },
     { name: 'Powered by Cloudflare', url: 'https://www.cloudflare.com', image: 'cloudflare.png' },
@@ -40,19 +46,19 @@
   const marqueeBadges = [...badges, ...badges];
 </script>
 
+{#snippet image(badge: Badge)}
+  <img
+    src={`${IMAGE_PREFIX}/${badge.image}`}
+    alt={badge.name}
+    title={badge.name}
+    loading="lazy"
+    class="h-8 w-22"
+  />
+{/snippet}
+
 <div class="w-full overflow-hidden">
   <div class="flex w-max animate-marquee whitespace-nowrap">
     {#each marqueeBadges as badge}
-      {#snippet image()}
-        <img
-          src={`${IMAGE_PREFIX}/${badge.image}`}
-          alt={badge.name}
-          title={badge.name}
-          loading="lazy"
-          class="h-8 w-22"
-        />
-      {/snippet}
-
       {#if badge.url}
         <a
           href={badge.url}
@@ -60,11 +66,11 @@
           rel="noopener noreferrer"
           class="mx-1 inline-block shrink-0"
         >
-          {@render image()}
+          {@render image(badge)}
         </a>
       {:else}
         <span class="mx-1 inline-block shrink-0">
-          {@render image()}
+          {@render image(badge)}
         </span>
       {/if}
     {/each}
