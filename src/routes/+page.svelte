@@ -32,7 +32,7 @@
   ];
 
   const links = [
-    { label: 'Email', name: 'root at baxt.dev', href: 'mailto:root@baxt.dev' },
+    { label: 'Email', name: 'root@baxt.dev', href: 'mailto:root@baxt.dev' },
     { label: 'GitHub', name: 'baxthus', href: 'https://github.com/baxthus' },
     { label: 'Discord', name: 'baxthus', href: `https://discord.com/users/${DISCORD_ID}` },
     { label: 'X', name: '@baxthus', href: 'https://x.com/baxthus' },
