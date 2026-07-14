@@ -9,12 +9,11 @@ export function lanyardWS(options: LanyardOptions & { socket: true }): void {
   onMount(() => {
     if (!('WebSocket' in window)) throw new Error("Browser doesn't support WebSocket connections");
 
-    const subscription = Array.isArray(userId) ? 'subscribe_to_ids' : 'subscribe_to_id';
     const ws = new WebSocket(WEBSOCKET_URL);
     let heartbeat: ReturnType<typeof setInterval> | null = null;
 
     ws.addEventListener('open', () => {
-      ws.send(JSON.stringify({ op: 2, d: { [subscription]: userId } }));
+      ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: userId } }));
 
       heartbeat = setInterval(() => {
         if (ws.readyState === WebSocket.OPEN) {

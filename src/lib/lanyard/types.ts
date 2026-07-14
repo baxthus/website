@@ -1,5 +1,5 @@
 export interface LanyardOptions {
-  userId: string | string[];
+  userId: string;
   socket?: boolean;
   onPresenceUpdate?: (presence: LanyardData) => void;
 }
