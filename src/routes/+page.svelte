@@ -31,8 +31,10 @@
     { label: 'Tools', items: 'Git, GitHub, GitLab, Linear, Notion' },
   ];
 
+  // obfuscation that doesn't actually makes a difference nowadays, but it's still a nice touch
+  const email = atob('cm9vdEBiYXh0LmRldg==');
+  let emailRevealed = $state(false);
   const links = [
-    { label: 'Email', name: 'root@baxt.dev', href: 'mailto:root@baxt.dev' },
     { label: 'GitHub', name: 'baxthus', href: 'https://github.com/baxthus' },
     { label: 'Discord', name: 'baxthus', href: `https://discord.com/users/${DISCORD_ID}` },
     { label: 'X', name: '@baxthus', href: 'https://x.com/baxthus' },
@@ -72,6 +74,13 @@
 
   <h3 class="font-bold">### Links</h3>
   <ul>
+    <li>
+      {#if emailRevealed}
+        Email: <a href={`mailto:${email}`}>{email}</a>
+      {:else}
+        Email: <button onclick={() => (emailRevealed = true)}>reveal</button>
+      {/if}
+    </li>
     {#each links as link}
       <li>
         {link.label}: <a href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a>

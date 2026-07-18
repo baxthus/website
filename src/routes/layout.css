@@ -36,12 +36,13 @@ body {
 }
 
 a,
-a:visited {
+a:visited,
+button {
   color: var(--link-color);
   cursor: pointer;
   width: fit-content;
 }
-a:hover {
+a:hover, button:hover {
   color: var(--text-color);
   background-color: var(--link-color);
 }
