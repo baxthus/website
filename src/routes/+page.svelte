@@ -32,7 +32,7 @@
   ];
 
   // obfuscation that doesn't actually makes a difference nowadays, but it's still a nice touch
-  const email = atob('cm9vdEBiYXh0LmRldg==');
+  const email = 'cm9vdEBiYXh0LmRldg==';
   let emailRevealed = $state(false);
   const links = [
     { label: 'GitHub', name: 'baxthus', href: 'https://github.com/baxthus' },
@@ -76,7 +76,8 @@
   <ul>
     <li>
       {#if emailRevealed}
-        Email: <a href={`mailto:${email}`}>{email}</a>
+        {const decodedEmail = atob(email)}
+        Email: <a href={`mailto:${decodedEmail}`}>{decodedEmail}</a>
       {:else}
         Email: <button onclick={() => (emailRevealed = true)}>reveal</button>
       {/if}
