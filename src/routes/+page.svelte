@@ -24,7 +24,6 @@
       items: 'HTML5, CSS, React, Next.js, Tanstack Start, Vue.js, Nuxt, Svelte, SvelteKit',
     },
     { label: 'UI & Styling', items: 'Tailwind CSS, shadcn/ui, HeroUI, NuxtUI, daisyUI, Motion' },
-    { label: 'Native', items: 'Tauri, egui' },
     { label: 'Backend & APIs', items: 'Node.js, Bun, ElysiaJS, Hono, Express, NestJS, tRPC, oRPC' },
     {
       label: 'Data',
