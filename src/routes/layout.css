@@ -12,7 +12,7 @@
 body {
   font-family: var(--font-mono);
   font-variant-ligatures: none;
-  @apply text-sm leading-tight antialiased;
+  @apply text-sm antialiased;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,7 +42,8 @@ button {
   cursor: pointer;
   width: fit-content;
 }
-a:hover, button:hover {
+a:hover,
+button:hover {
   color: var(--text-color);
   background-color: var(--link-color);
 }

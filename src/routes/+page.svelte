@@ -17,21 +17,25 @@
   const techStack = [
     {
       label: 'Languages',
-      items: 'HTML5, CSS, JavaScript, TypeScript, C#, Go, Java, Kotlin, Python, Lua',
+      items: 'JavaScript, TypeScript, C#, Go, Rust, Java, Kotlin, Python',
     },
-    { label: 'Frontend', items: 'React, Next.js, Tanstack Start, Vue.js, Nuxt, Svelte, SvelteKit' },
-    { label: 'Styling', items: 'Tailwind CSS, shadcn/ui, HeroUI, NuxtUI, daisyUI, Motion' },
-    { label: 'Backend', items: 'Node.js, Bun, ElysiaJS, Hono, Express, NestJS, tRPC, oRPC' },
     {
-      label: 'Database',
-      items: 'PostgreSQL, SQLite, Convex, MongoDB, Redis, PocketBase, Drizzle ORM, Prisma',
+      label: 'Web',
+      items: 'HTML5, CSS, React, Next.js, Tanstack Start, Vue.js, Nuxt, Svelte, SvelteKit',
     },
-    { label: 'Auth & Payments', items: 'Better Auth, Clerk, Stripe' },
-    { label: 'Infra', items: 'Docker, Podman, Vercel, Cloudflare, Axiom' },
-    { label: 'Tools', items: 'Git, GitHub, GitLab, Linear, Notion' },
+    { label: 'UI & Styling', items: 'Tailwind CSS, shadcn/ui, HeroUI, NuxtUI, daisyUI, Motion' },
+    { label: 'Native', items: 'Tauri, egui' },
+    { label: 'Backend & APIs', items: 'Node.js, Bun, ElysiaJS, Hono, Express, NestJS, tRPC, oRPC' },
+    {
+      label: 'Data',
+      items: 'PostgreSQL, SQLite, MongoDB, Redis, Convex, PocketBase, Drizzle ORM, Prisma',
+    },
+    { label: 'Auth & Billing', items: 'Better Auth, Clerk, Stripe' },
+    { label: 'Infra & Deploy', items: 'Docker, Podman, Vercel, Cloudflare, Axiom' },
+    { label: 'Workflow', items: 'Git, GitHub, GitLab, Linear, Notion' },
   ];
 
-  // obfuscation that doesn't actually makes a difference nowadays, but it's still a nice touch
+  // obfuscation that doesn't really makes a difference nowadays, but it's still a nice touch
   const email = 'cm9vdEBiYXh0LmRldg==';
   let emailRevealed = $state(false);
   const links = [
