@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   const IMAGE_PREFIX = '88x31';
 
   interface Badge {
@@ -11,7 +13,7 @@
     { name: 'Made with Neovim', url: 'https://neovim.io', image: 'neovim.png' },
     { name: 'Made on Linux', url: 'https://www.linux.org', image: 'madeon_linux.gif' },
     { name: 'Powered by Cloudflare', url: 'https://www.cloudflare.com', image: 'cloudflare.png' },
-    { name: 'Powered by React', url: 'https://react.dev', image: 'react.png' },
+    { name: 'Powered by Svelte', url: 'https://svelte.dev', image: 'svelte.png' },
     { name: 'Linux Now! (Xenia)', image: 'xenia-now.gif' },
     { name: 'No Cookie', image: 'nocookie.gif' },
     { name: 'Bi Flag', image: 'flag-bi.png' },
@@ -36,14 +38,34 @@
     { name: 'I LIKE COMPUTER', image: 'i_like_computer.png' },
     { name: 'TypeScript', image: 'typescript.gif', url: 'https://www.typescriptlang.org' },
     { name: 'Powered by Bun', image: 'powered-by-bun.gif', url: 'https://bun.sh' },
-    { name: 'Shipped it on Vercel', image: 'shipped-it.gif', url: 'https://vercel.com' },
     { name: 'Penguin Computing', image: 'penguin.gif' },
     { name: 'Half-Life', image: 'half-life.gif', url: 'https://www.half-life.com' },
+    { name: 'I use Arch BTW', image: 'archlinux.gif', url: 'https://archlinux.org' },
+    { name: 'git.gay', image: 'git-gay.png', url: 'https://git.gay' },
+    { name: 'Use Rust Now!', image: 'rust.png', url: 'https://rust-lang.org' },
   ];
 
-  // Duplicated so the second half lines up exactly with the first,
-  // making the -50% -> 0% loop seamless instead of a jump-cut.
-  const marqueeBadges = [...badges, ...badges];
+  // fisher-yates shuffle
+  function shuffle(items: Badge[]) {
+    const shuffled = [...items];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+
+    return shuffled;
+  }
+
+  let marqueeBadges = $state<Badge[]>([]);
+
+  onMount(() => {
+    const shuffled = shuffle(badges);
+
+    // Duplicated so the second half lines up exactly with the first,
+    // making the -50% -> 0% loop seamless instead of a jump-cut.
+    marqueeBadges = [...shuffled, ...shuffled];
+  });
 </script>
 
 {#snippet image(badge: Badge)}
@@ -56,23 +78,27 @@
   />
 {/snippet}
 
-<div class="w-full overflow-hidden">
-  <div class="flex w-max animate-marquee whitespace-nowrap">
-    {#each marqueeBadges as badge}
-      {#if badge.url}
-        <a
-          href={badge.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mx-1 inline-block shrink-0"
-        >
-          {@render image(badge)}
-        </a>
-      {:else}
-        <span class="mx-1 inline-block shrink-0">
-          {@render image(badge)}
-        </span>
-      {/if}
-    {/each}
-  </div>
+<div class="min-h-8 w-full overflow-hidden">
+  {#if marqueeBadges.length > 0}
+    <div class="flex w-max animate-marquee whitespace-nowrap">
+      {#each marqueeBadges as badge}
+        {#if badge.url}
+          <a
+            href={badge.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mx-1 inline-block shrink-0"
+          >
+            {@render image(badge)}
+          </a>
+        {:else}
+          <span class="mx-1 inline-block shrink-0">
+            {@render image(badge)}
+          </span>
+        {/if}
+      {/each}
+    </div>
+  {:else}
+    <div class="h-8" aria-hidden="true"></div>
+  {/if}
 </div>
