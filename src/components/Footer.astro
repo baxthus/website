@@ -1,13 +1,11 @@
 ---
 import { CF_PAGES_COMMIT_SHA, LICENSE_URL, REPO_URL } from 'astro:env/server';
-import Badges from './Badges.svelte';
+import Badges from './Badges.astro';
 ---
 
 <footer class="space-y-3.5">
   <hr />
-  <div>
-    <Badges client:load />
-  </div>
+  <Badges />
   <div>
     <p>
       Source code <a href={REPO_URL} target="_blank" rel="noopener noreferrer">available here</a>,

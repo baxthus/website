@@ -1,6 +1,4 @@
-<script lang="ts">
-import { onMount } from 'svelte';
-
+---
 const IMAGE_PREFIX = '/88x31';
 
 interface Badge {
@@ -44,59 +42,66 @@ const badges: Badge[] = [
   { name: 'git.gay', image: 'git-gay.png', url: 'https://git.gay' },
   { name: 'Use Rust Now!', image: 'rust.png', url: 'https://rust-lang.org' },
   { name: 'Powered by Astro', image: 'astro.png', url: 'https://astro.build' },
+  { name: 'Made with VSCodium', image: 'vscodium.png', url: 'https://vscodium.com' },
 ];
+---
 
+<div id="badge-marquee" class="min-h-8 w-full overflow-hidden">
+  <div class="h-8" hidden></div>
+</div>
+
+<script is:inline define:vars={{ badges, IMAGE_PREFIX }}>
 // fisher-yates shuffle
-function shuffle(items: Badge[]) {
+function shuffle(items) {
   const shuffled = [...items];
-
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
     const randomIndex = Math.floor(Math.random() * (index + 1));
     [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
   }
-
   return shuffled;
 }
 
-let marqueeBadges = $state<Badge[]>([]);
+function renderBadge(badge) {
+  const img = document.createElement('img');
+  img.src = `${IMAGE_PREFIX}/${badge.image}`;
+  img.alt = badge.name;
+  img.title = badge.name;
+  img.className = 'h-8 w-22';
 
-onMount(() => {
-  const shuffled = shuffle(badges);
+  if (badge.url) {
+    const a = document.createElement('a');
+    a.href = badge.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.className = 'mx-1 inline-block shrink-0';
+    a.appendChild(img);
+    return a;
+  }
 
-  // Duplicated so the second half lines up exactly with the first,
-  // making the -50% -> 0% loop seamless instead of a jump-cut.
-  marqueeBadges = [...shuffled, ...shuffled];
-});
+  const span = document.createElement('span');
+  span.className = 'mx-1 inline-block shrink-0';
+  span.appendChild(img);
+  return span;
+}
+
+function initMarquee() {
+  const container = document.getElementById('badge-marquee');
+  if (container) {
+    const shuffled = shuffle(badges);
+    // Duplicated so the second half lines up exactly with the first,
+    // making the -50% -> 0% loop seamless instead of a jump-cut.
+    const marqueeBadges = [...shuffled, ...shuffled];
+
+    const track = document.createElement('div');
+    track.className = 'flex w-max animate-marquee whitespace-nowrap';
+
+    for (const badge of marqueeBadges) {
+      track.appendChild(renderBadge(badge));
+    }
+
+    container.replaceChildren(track);
+  }
+}
+
+document.addEventListener('astro:page-load', initMarquee);
 </script>
-
-{#snippet image(badge: Badge)}
-  <img
-    src={`${IMAGE_PREFIX}/${badge.image}`}
-    alt={badge.name}
-    title={badge.name}
-    class="h-8 w-22"
-  />
-{/snippet}
-
-<div class="min-h-8 w-full overflow-hidden">
-  {#if marqueeBadges.length > 0}
-    <div class="flex w-max animate-marquee whitespace-nowrap">
-      {#each marqueeBadges as badge}
-        {#if badge.url}
-          <a
-            href={badge.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mx-1 inline-block shrink-0"
-          >
-            {@render image(badge)}
-          </a>
-        {:else}
-          <span class="mx-1 inline-block shrink-0"> {@render image(badge)} </span>
-        {/if}
-      {/each}
-    </div>
-  {:else}
-    <div class="h-8" aria-hidden="true"></div>
-  {/if}
-</div>
