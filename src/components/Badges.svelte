@@ -1,7 +1,7 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 
-const IMAGE_PREFIX = '88x31';
+const IMAGE_PREFIX = '/88x31';
 
 interface Badge {
   name: string;

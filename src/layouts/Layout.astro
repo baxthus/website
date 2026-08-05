@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import { Font } from 'astro:assets';
 import { PUBLIC_URL } from 'astro:env/server';
+import { ClientRouter } from 'astro:transitions';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 
@@ -41,6 +42,8 @@ logBanner();
     <meta property="twitter:image" content={`${PUBLIC_URL}/${favicon}`} />
 
     <Font cssVariable="--font-geist-mono" />
+
+    <ClientRouter />
   </head>
 
   <body class="mx-4 my-3.5 max-w-3xl space-y-3.5 md:mx-auto">
