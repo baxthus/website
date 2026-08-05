@@ -1,6 +1,10 @@
 import { WEBSOCKET_URL } from './constants';
 import type { LanyardData, LanyardOptions } from './types';
 
+type LanyardMessage =
+  | { op: 1; d: { heartbeat_interval: number } }
+  | { op: 0; t: 'INIT_STATE' | 'PRESENCE_UPDATE'; d: LanyardData };
+
 export function lanyardWS(options: LanyardOptions & { socket: true }): () => void {
   const { userId, onPresenceUpdate } = options;
 
@@ -9,24 +13,23 @@ export function lanyardWS(options: LanyardOptions & { socket: true }): () => voi
   const ws = new WebSocket(WEBSOCKET_URL);
   let heartbeat: ReturnType<typeof setInterval> | null = null;
 
-  ws.addEventListener('open', () => {
-    ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: userId } }));
-
-    heartbeat = setInterval(() => {
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({ op: 3 }));
-      }
-    }, 30_000);
-  });
-
   ws.addEventListener('message', (e) => {
-    const { t, d } = JSON.parse(e.data) as {
-      t: 'INIT_STATE' | 'PRESENCE_UPDATE';
-      d: LanyardData;
-    };
-    if (t === 'INIT_STATE' || t === 'PRESENCE_UPDATE') {
-      onPresenceUpdate?.(d ?? {});
+    const message = JSON.parse(e.data) as LanyardMessage;
+
+    if (message.op === 1) {
+      ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: userId } }));
+
+      if (heartbeat) clearInterval(heartbeat);
+      heartbeat = setInterval(() => {
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({ op: 3 }));
+        }
+      }, message.d.heartbeat_interval);
+
+      return;
     }
+
+    onPresenceUpdate?.(message.d);
   });
 
   return () => {
