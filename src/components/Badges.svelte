@@ -43,6 +43,7 @@ const badges: Badge[] = [
   { name: 'I use Arch BTW', image: 'archlinux.gif', url: 'https://archlinux.org' },
   { name: 'git.gay', image: 'git-gay.png', url: 'https://git.gay' },
   { name: 'Use Rust Now!', image: 'rust.png', url: 'https://rust-lang.org' },
+  { name: 'Powered by Astro', image: 'astro.png', url: 'https://astro.build' },
 ];
 
 // fisher-yates shuffle
