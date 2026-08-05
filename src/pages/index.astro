@@ -1,0 +1,83 @@
+---
+import { DISCORD_ID } from 'astro:env/client';
+import Presence from '@/components/Presence.svelte';
+import Layout from '@/layouts/Layout.astro';
+
+const techStack = [
+  {
+    label: 'Languages',
+    items: 'JavaScript, TypeScript, C#, Go, Rust, Java, Kotlin, Python',
+  },
+  {
+    label: 'Web',
+    items: 'HTML5, CSS, React, Next.js, Tanstack Start, Vue.js, Nuxt, Svelte, SvelteKit',
+  },
+  { label: 'UI & Styling', items: 'Tailwind CSS, shadcn/ui, HeroUI, NuxtUI, daisyUI, Motion' },
+  { label: 'Backend & APIs', items: 'Node.js, Bun, ElysiaJS, Hono, Express, NestJS, tRPC, oRPC' },
+  {
+    label: 'Data',
+    items: 'PostgreSQL, SQLite, MongoDB, Redis, Convex, PocketBase, Drizzle ORM, Prisma',
+  },
+  { label: 'Auth & Billing', items: 'Better Auth, Clerk, Stripe' },
+  { label: 'Infra & Deploy', items: 'Docker, Podman, Vercel, Cloudflare, Axiom' },
+  { label: 'Workflow', items: 'Git, GitHub, GitLab, Linear, Notion' },
+];
+
+// obfuscation that doesn't really make a difference nowadays, but it's still a nice touch
+const email = 'cm9vdEBiYXh0LmRldg==';
+
+const links = [
+  { label: 'GitHub', name: 'baxthus', href: 'https://github.com/baxthus' },
+  { label: 'git.gay', name: 'baxthus', href: 'https://git.gay/baxthus' },
+  { label: 'Discord', name: 'baxthus', href: `https://discord.com/users/${DISCORD_ID}` },
+  { label: 'X', name: '@baxthus', href: 'https://x.com/baxthus' },
+  { label: 'Steam', name: 'baxthus', href: 'https://steamcommunity.com/id/baxthus' },
+  { label: 'Last.fm', name: 'baxthus', href: 'https://www.last.fm/user/baxthus' },
+];
+---
+
+<Layout>
+  <div class="space-y-3.5">
+    <p>
+      <span>BREATHE SMOKE WHERE THE AIR IS FRESH</span>
+      <br />
+      <span>Full-Stack Developer (in my dreams)</span>
+    </p>
+
+    <div>
+      <Presence client:load />
+    </div>
+
+    <h3 class="font-bold">### Tech Stack</h3>
+    <ul>
+      {techStack.map((item) => <li>{item.label}: {item.items}</li>)}
+    </ul>
+
+    <h3 class="font-bold">### Links</h3>
+    <ul>
+      <li>
+        Email:{' '}
+        <button id="reveal-email">reveal</button>
+        <a id="email-link" href="#" hidden></a>
+      </li>
+      {links.map((link) => (
+        <li>
+          {link.label}: <a href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>
+
+<script is:inline define:vars={{ email }}>
+const revealBtn = document.getElementById('reveal-email');
+const emailLink = document.getElementById('email-link');
+
+revealBtn.addEventListener('click', () => {
+  const decoded = atob(email);
+  emailLink.textContent = decoded;
+  emailLink.href = `mailto:${decoded}`;
+  emailLink.hidden = false;
+  revealBtn.hidden = true;
+});
+</script>

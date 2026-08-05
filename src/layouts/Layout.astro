@@ -1,0 +1,53 @@
+---
+import '@/styles/global.css';
+import { Font } from 'astro:assets';
+import { PUBLIC_URL } from 'astro:env/server';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+
+const title = 'baxthus';
+const description = 'BREATHE SMOKE WHERE THE AIR IS FRESH';
+const favicon = '/favicon.ico';
+---
+
+<script>
+import { logBanner } from '@/lib/banner';
+
+logBanner();
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href={favicon} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={PUBLIC_URL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${PUBLIC_URL}/${favicon}`} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={PUBLIC_URL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={`${PUBLIC_URL}/${favicon}`} />
+
+    <Font cssVariable="--font-geist-mono" />
+  </head>
+
+  <body class="mx-4 my-3.5 max-w-3xl space-y-3.5 md:mx-auto">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
