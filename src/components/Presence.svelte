@@ -1,11 +1,14 @@
 <script lang="ts">
 import { DISCORD_ID } from 'astro:env/client';
+import { onMount } from 'svelte';
 import { lanyardWS } from '@/lib/lanyard';
 import type { LanyardData } from '@/lib/lanyard/types';
 import Spotify from './Spotify.svelte';
 
 let lanyard = $state<LanyardData>();
-lanyardWS({ socket: true, userId: DISCORD_ID, onPresenceUpdate: (data) => (lanyard = data) });
+onMount(() =>
+  lanyardWS({ socket: true, userId: DISCORD_ID, onPresenceUpdate: (data) => (lanyard = data) }),
+);
 
 const statusColor: Record<LanyardData['discord_status'], string> = {
   online: 'text-emerald-500',
