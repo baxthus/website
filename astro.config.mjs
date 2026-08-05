@@ -1,7 +1,6 @@
+import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField, fontProviders } from 'astro/config';
-
-import svelte from '@astrojs/svelte';
 
 export default defineConfig({
   vite: {
@@ -33,6 +32,10 @@ export default defineConfig({
         default: 'unknown',
       }),
     },
+  },
+
+  prefetch: {
+    prefetchAll: false,
   },
 
   integrations: [svelte()],
