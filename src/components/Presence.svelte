@@ -11,10 +11,10 @@ onMount(() =>
 );
 
 const statusColor: Record<LanyardData['discord_status'], string> = {
-  online: 'text-emerald-500',
-  idle: 'text-amber-500',
-  dnd: 'text-red-500',
-  offline: 'text-slate-500',
+  online: 'font-semibold text-emerald-700 dark:text-emerald-400',
+  idle: 'font-semibold text-amber-700 dark:text-amber-400',
+  dnd: 'font-semibold text-red-700 dark:text-red-400',
+  offline: 'font-semibold text-slate-700 dark:text-slate-400',
 };
 </script>
 
