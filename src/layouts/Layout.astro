@@ -3,7 +3,6 @@ import '@/styles/global.css';
 import { Font } from 'astro:assets';
 import { PUBLIC_URL } from 'astro:env/server';
 import { ClientRouter } from 'astro:transitions';
-import AsciiBackground from '@/components/AsciiBackground.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 
@@ -47,14 +46,11 @@ logBanner();
     <ClientRouter />
   </head>
 
-  <body>
-    <AsciiBackground />
-    <div class="relative z-10 mx-4 my-3.5 max-w-3xl space-y-3.5 md:mx-auto">
-      <Header />
-      <main>
-        <slot />
-      </main>
-      <Footer />
-    </div>
+  <body class="mx-4 my-3.5 max-w-3xl space-y-3.5 md:mx-auto">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
